@@ -14,11 +14,10 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sceneNode = GameScene(size: view.frame.size)
-        // Set the scale mode to scale to fit the window
+        let sceneNode = LevelScene(size: view.frame.size)
         sceneNode.scaleMode = .aspectFill
+        sceneNode.transitionDelegate = self as TransitionDelegate
         
-        // Present the scene
         if let view = self.view as! SKView? {
             view.presentScene(sceneNode)
             
@@ -46,4 +45,18 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+}
+extension GameViewController: TransitionDelegate {
+    func returnToLevelsViewController() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+//    func return() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "CharacterSkinCollectionViewController") as! CharacterSkinCollectionViewController
+//        vc.modalTransitionStyle = .coverVertical
+//        vc.modalPresentationStyle = .fullScreen
+//        let navController = UINavigationController(rootViewController: vc)
+//        self.present(navController, animated: true, completion: nil)
+//    }
 }

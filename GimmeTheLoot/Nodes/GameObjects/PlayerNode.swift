@@ -14,8 +14,13 @@ public class PlayerNode: SKSpriteNode {
                               color: .blue,
                               size: CGSize(width: 70,
                                            height: 100))
+        node.name = "player"
         node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
         node.physicsBody?.categoryBitMask = PhysicsCategory.Player
+        
+        //TO DO
+        // ADD colision and testcontact bit masks
+        
         return node
     }
 }
