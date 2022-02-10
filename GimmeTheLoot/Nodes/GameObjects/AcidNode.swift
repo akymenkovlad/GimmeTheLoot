@@ -17,8 +17,9 @@ public class AcidNode: SKShapeNode {
         node.physicsBody?.categoryBitMask = PhysicsCategory.Acid
         node.physicsBody?.isDynamic = false
         let emitter = SKEmitterNode(fileNamed: "Acid")!
-        emitter.particlePositionRange = CGVector(dx: size.width, dy: size.height)
+        emitter.particlePositionRange = CGVector(dx: size.width, dy: size.height + 5)
         node.addChild(emitter)
+        emitter.position.y += 20
         //TO DO
         // ADD colision and testcontact bit masks
         

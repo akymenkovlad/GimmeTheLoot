@@ -17,7 +17,7 @@ public class PinNode: SKSpriteNode {
     }
     private(set) var wasMoved = false
     
-    public static func newInstance(with size: CGSize, direction: PinDirections, in point: CGPoint) -> PinNode {
+    public static func newInstance(with size: CGSize, direction: PinDirections) -> PinNode {
         let node = PinNode(texture: SKTexture(imageNamed: "pin"),
                            color: .yellow,
                            size: CGSize(width: size.width,

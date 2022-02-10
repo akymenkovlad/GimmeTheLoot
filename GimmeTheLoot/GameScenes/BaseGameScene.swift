@@ -32,15 +32,6 @@ class BaseGameScene: SKScene {
     override func didMove(to view: SKView) {
         hud = HudNode()
         hud.setup(size: size)
-        hud.restartButtonAction = {
-            print("restart level")
-            for child in self.children {
-                if child.name == "player" || child.name == "pin" || child.name == "prize" {
-                    child.removeFromParent()
-                }
-            }
-            self.configureLevelObjects()
-        }
         hud.menuButtonAction = {
             print("return to LevelsViewController")
             guard let delegate = self.transitionDelegate else { return }
@@ -59,52 +50,12 @@ class BaseGameScene: SKScene {
         
         gameFrame = GameFrameNode.newInstance(with: size)
         gameFrame.position = CGPoint(x: size.width / 2,
-                                     y: size.height / 2 - 50 )
+                                     y: size.height / 2 - 25 )
         addChild(gameFrame)
         
-        configureLevelObjects()
         setupSwipes()
     }
-    
-    public func configureLevelObjects() {
-        player = PlayerNode.newInstance()
-        player.position = CGPoint(x: size.width / 2,
-                                  y: size.height / 2)
-        addChild(player)
-        
-        pins = []
-        pins.append(PinNode.newInstance(with: CGSize(width: gameFrame.frame.width * 0.6,
-                                                     height: 20),
-                                        direction: .left,
-                                        in: CGPoint(x: size.width / 2,
-                                                    y: size.height / 2)))
-        for pin in pins {
-            pin.position = CGPoint(x: size.width / 2,
-                                   y: size.height / 2)
-            pin.setAngle()
-            addChild(pin)
-        }
-        money = MoneyNode.newInstance()
-        money.position =  CGPoint(x: size.width / 2,
-                                  y: size.height / 2 + 100)
-        addChild(money)
-        
-        acid = AcidNode.newInstance()
-        acid.position =  CGPoint(x: size.width / 2,
-                                 y: size.height / 2 + 200)
-        addChild(acid)
-        
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let first = touches.first else { return }
-        let location = first.location(in: self)
-        if let pin = pins.first(where: { node in node.contains(location) }) {
-            touchedPin = pin
-        } else {
-            hud.touchBeganAtPoint(point: location)
-        }
-    }
+
     
     func setupSwipes() {
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
@@ -125,6 +76,7 @@ class BaseGameScene: SKScene {
     }
     
     @objc func didSwipe(sender: UISwipeGestureRecognizer) {
+        print("swiped")
         guard let touchedPin = touchedPin, !touchedPin.wasMoved else { return }
         
         let pinDirection = touchedPin.direction
