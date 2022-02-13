@@ -11,16 +11,18 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
+    var level:Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sceneNode = LevelScene(size: view.frame.size, level: 1)
+        let sceneNode = LevelScene(size: view.frame.size, level: level)
         sceneNode.scaleMode = .aspectFill
         sceneNode.transitionDelegate = self as TransitionDelegate
         
+        print("aded delegate")
         if let view = self.view as! SKView? {
             view.presentScene(sceneNode)
-            
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true
@@ -48,6 +50,10 @@ class GameViewController: UIViewController {
 }
 extension GameViewController: TransitionDelegate {
     func returnToLevelsViewController() {
+        if let view = self.view as! SKView? {
+            view.presentScene(nil)
+            print("removed")
+        }
         self.dismiss(animated: true, completion: nil)
     }
 

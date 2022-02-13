@@ -18,8 +18,10 @@ class BaseGameScene: SKScene {
     var hud: HudNode!
     var gameFrame: GameFrameNode!
     
-    var levelModel = LevelModel()
+    var levelModel: LevelModel! = LevelModel()
+    var currentLevel: Int!
     
+    let defaults = UserDefaults.standard
     
     var touchedPin: PinNode!
     var touchedNode: PlayerNode!
@@ -40,11 +42,9 @@ class BaseGameScene: SKScene {
             for gesture in view.gestureRecognizers! {
                 if let recognizerSwipe = gesture as? UISwipeGestureRecognizer {
                     view.removeGestureRecognizer(recognizerSwipe)
-                    print("gesture removed")
                 }
                 if let recognizerTap = gesture as? UITapGestureRecognizer {
                     view.removeGestureRecognizer(recognizerTap)
-                    print("gesture removed")
                 }
             }
             self.hud.restartButtonAction = nil
@@ -61,7 +61,6 @@ class BaseGameScene: SKScene {
         setupSwipes()
         setupTaps()
     }
-
     
     func setupSwipes() {
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
@@ -107,7 +106,8 @@ class BaseGameScene: SKScene {
         var actions = [SKAction]()
         actions.append(.move(by: vector, duration: 0.3))
         actions.append(.wait(forDuration: 0.5))
-        actions.append(.run {
+        actions.append(.run { [weak self] in
+            guard let self = self else { return }
             self.touchedPin.removeFromParent()
             self.touchedPin = nil
         })
@@ -119,6 +119,9 @@ class BaseGameScene: SKScene {
         touchedNode.startMovement()
         self.touchedNode = nil
     }
+    deinit{
+        print("GameScene deinited")
+    }
 }
 extension BaseGameScene: SKPhysicsContactDelegate {
     
@@ -127,11 +130,12 @@ extension BaseGameScene: SKPhysicsContactDelegate {
             handlePlayerContact(contact: contact )
         }
         if (contact.bodyA.categoryBitMask == PhysicsCategory.Prize && contact.bodyB.categoryBitMask == PhysicsCategory.Player) || (contact.bodyB.categoryBitMask == PhysicsCategory.Prize && contact.bodyA.categoryBitMask == PhysicsCategory.Player) {
-            print("Win")
             levelModel.player.removeAllActions()
             levelModel.player.physicsBody = nil
+            self.hud.restartButtonAction = nil
+            self.hud.menuButtonAction = nil
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: true)
+            let gameOverScene = GameOverScene(size: self.size, won: true, level: currentLevel)
             gameOverScene.transitionDelegate = transitionDelegate
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
@@ -156,5 +160,6 @@ extension BaseGameScene: SKPhysicsContactDelegate {
             break
         }
     }
+
 }
 

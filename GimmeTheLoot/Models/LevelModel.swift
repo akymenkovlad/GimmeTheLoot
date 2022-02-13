@@ -19,10 +19,10 @@ class LevelModel   {
         player = PlayerNode.newInstance()
         prize = PrizeNode.newInstance()
         
-        var groundsSize: [CGSize]!
-        var groundsPositions: [CGPoint]!
-        var pinsDirections: [PinDirections]!
-        var pinsPositions: [CGPoint]!
+        var groundsSize: [CGSize]! = []
+        var groundsPositions: [CGPoint]! = []
+        var pinsDirections: [PinDirections]! = []
+        var pinsPositions: [CGPoint]! = []
         let pinSize = CGSize(width: frame.width * 0.6, height: 20)
     
         switch level {
@@ -50,7 +50,16 @@ class LevelModel   {
             player.position =  CGPoint(x: frame.maxX - player.size.width / 2,
                                       y: groundsPositions[0].y + player.size.height / 2)
         case 3:
-            break
+            groundsSize = [CGSize(width: frame.width - 5, height: frame.height / 7)]
+            groundsPositions = [CGPoint(x: frame.midX, y: frame.minY + frame.height / 14)]
+            pinsPositions = [CGPoint(x: frame.midX,
+                                     y:  groundsPositions[0].y + (groundsSize[0].height + pinSize.width) / 2)]
+            pinsDirections = [.down]
+          
+            player.position = CGPoint(x: frame.minX +  player.size.width / 2,
+                                      y:  groundsPositions[0].y + player.size.height / 2)
+            prize.position =  CGPoint(x: frame.maxX - prize.size.width / 2,
+                                      y: groundsPositions[0].y + prize.size.height / 2)
         default:
             break
         }

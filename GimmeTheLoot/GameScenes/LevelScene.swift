@@ -9,7 +9,6 @@ import SpriteKit
 
 class LevelScene: BaseGameScene {
     
-    private var currentLevel: Int!
     
     init(size: CGSize, level:Int) {
         super.init(size: size)
@@ -69,5 +68,4 @@ class LevelScene: BaseGameScene {
             levelModel.player.updatePosition()
         }
     }
-    
 }
