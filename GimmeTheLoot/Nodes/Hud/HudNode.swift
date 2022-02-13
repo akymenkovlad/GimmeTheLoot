@@ -16,6 +16,8 @@ class HudNode : SKNode {
     private let restartButtonTexture = SKTexture(imageNamed: "quit_button")
     var restartButtonAction : (() -> ())?
     
+    private var levelLabel : SKLabelNode!
+    
     //Setup hud here
     public func setup(size: CGSize) {
         
@@ -35,6 +37,13 @@ class HudNode : SKNode {
                                          y: size.height - restartButton.size.height / 2 - margin)
         restartButton.zPosition = 1000
         
+        levelLabel = SKLabelNode(fontNamed: "Chalkduster")
+        levelLabel.text = "Level"
+        levelLabel.fontSize = 30
+        levelLabel.fontColor = SKColor.white
+        levelLabel.position = CGPoint(x: size.width / 2, y: size.height - 50 - levelLabel.fontSize )
+        
+        addChild(levelLabel)
         addChild(menuButton)
         addChild(restartButton)
     }
@@ -45,6 +54,9 @@ class HudNode : SKNode {
         } else if restartButton.contains(point) && restartButtonAction != nil {
             restartButtonAction!()
         }
+    }
+    func setTextForLabel(_ text: String) {
+        levelLabel.text = text
     }
 }
 

@@ -15,7 +15,7 @@ struct PhysicsCategory {
     static let GameFrame: UInt32 = 0x1 << 2
     static let Pin: UInt32 = 0x1 << 3
     static let Enemy: UInt32 = 0x1 << 4
-    static let Money: UInt32 = 0x1 << 5
+    static let Prize: UInt32 = 0x1 << 5
     static let Ground: UInt32 = 0x1 << 5
     static let Acid: UInt32 = 0x1 << 5
 }

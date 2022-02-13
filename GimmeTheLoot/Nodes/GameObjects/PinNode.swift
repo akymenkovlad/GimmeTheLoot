@@ -27,7 +27,7 @@ public class PinNode: SKSpriteNode {
         
         node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
         node.physicsBody?.isDynamic = false
-        node.physicsBody?.categoryBitMask = PhysicsCategory.Player
+        node.physicsBody?.categoryBitMask = PhysicsCategory.Pin
         //TO DO
         // ADD colision and testcontact bit masks
         return node

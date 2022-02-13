@@ -15,24 +15,24 @@ public class GameFrameNode: SKShapeNode {
         let rectSize = CGSize(width: size.width - 50, height: size.height - 150)
         let  node = GameFrameNode(rectOf: rectSize)
         node.strokeColor = .red
-        node.lineWidth = 5
+        node.lineWidth = 2
         var bodies: [SKPhysicsBody] = []
-        bodies.append(SKPhysicsBody(rectangleOf: CGSize(width: 1,
+        bodies.append(SKPhysicsBody(rectangleOf: CGSize(width: 5,
                                                         height: node.frame.height),
-                                    center: CGPoint(x: node.frame.minX,
+                                    center: CGPoint(x: node.frame.minX + 2.5,
                                                     y: 0)))
-        bodies.append(SKPhysicsBody(rectangleOf: CGSize(width: 1,
+        bodies.append(SKPhysicsBody(rectangleOf: CGSize(width: 5,
                                                         height: node.frame.height),
-                                    center: CGPoint(x: node.frame.maxX,
+                                    center: CGPoint(x: node.frame.maxX - 2.5,
                                                     y: 0)))
         bodies.append(SKPhysicsBody(rectangleOf: CGSize(width: node.frame.width,
-                                                        height: 1),
+                                                        height: 5),
                                     center: CGPoint(x: 0,
-                                                    y: node.frame.maxY)))
+                                                    y: node.frame.maxY - 2.5)))
         bodies.append(SKPhysicsBody(rectangleOf: CGSize(width: node.frame.width,
-                                                        height: 1),
+                                                        height: 5),
                                     center: CGPoint(x: 0,
-                                                    y: node.frame.minY)))
+                                                    y: node.frame.minY + 2.5)))
         node.physicsBody = SKPhysicsBody(bodies: bodies)
 
         node.physicsBody?.isDynamic = false

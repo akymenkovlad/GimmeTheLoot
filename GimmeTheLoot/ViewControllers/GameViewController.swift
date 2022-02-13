@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sceneNode = LevelScene(size: view.frame.size)
+        let sceneNode = LevelScene(size: view.frame.size, level: 1)
         sceneNode.scaleMode = .aspectFill
         sceneNode.transitionDelegate = self as TransitionDelegate
         
@@ -50,13 +50,5 @@ extension GameViewController: TransitionDelegate {
     func returnToLevelsViewController() {
         self.dismiss(animated: true, completion: nil)
     }
-    
-//    func return() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "CharacterSkinCollectionViewController") as! CharacterSkinCollectionViewController
-//        vc.modalTransitionStyle = .coverVertical
-//        vc.modalPresentationStyle = .fullScreen
-//        let navController = UINavigationController(rootViewController: vc)
-//        self.present(navController, animated: true, completion: nil)
-//    }
+
 }

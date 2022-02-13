@@ -9,11 +9,11 @@ import SpriteKit
 
 public class GroundNode: SKSpriteNode {
     
-    public static func newInstance() -> GroundNode {
+    public static func newInstance(with size: CGSize) -> GroundNode {
         let node = GroundNode(texture: nil,
-                              color: .blue,
-                              size: CGSize(width: 70,
-                                           height: 100))
+                              color: .brown,
+                              size: CGSize(width: size.width,
+                                           height: size.height))
         node.name = "ground"
         node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
         node.physicsBody?.isDynamic = false

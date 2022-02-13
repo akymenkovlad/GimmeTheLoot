@@ -18,15 +18,16 @@ class BaseGameScene: SKScene {
     var hud: HudNode!
     var gameFrame: GameFrameNode!
     
-    var player: PlayerNode!
-    var pins: [PinNode]! = []
+    var levelModel = LevelModel()
+    
+    
     var touchedPin: PinNode!
-    var money: MoneyNode!
-    var acid: AcidNode!
+    var touchedNode: PlayerNode!
     
     weak var transitionDelegate: TransitionDelegate?
     
     override func sceneDidLoad() {
+        physicsWorld.contactDelegate = self
     }
     
     override func didMove(to view: SKView) {
@@ -39,6 +40,10 @@ class BaseGameScene: SKScene {
             for gesture in view.gestureRecognizers! {
                 if let recognizerSwipe = gesture as? UISwipeGestureRecognizer {
                     view.removeGestureRecognizer(recognizerSwipe)
+                    print("gesture removed")
+                }
+                if let recognizerTap = gesture as? UITapGestureRecognizer {
+                    view.removeGestureRecognizer(recognizerTap)
                     print("gesture removed")
                 }
             }
@@ -54,6 +59,7 @@ class BaseGameScene: SKScene {
         addChild(gameFrame)
         
         setupSwipes()
+        setupTaps()
     }
 
     
@@ -71,8 +77,12 @@ class BaseGameScene: SKScene {
         downSwipe.direction = .left
         
         [rightSwipe, upSwipe, leftSwipe, downSwipe].forEach { view?.addGestureRecognizer($0)}
-        
-        view?.addGestureRecognizer(rightSwipe)
+    }
+    
+    func setupTaps() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(sender:)))
+        tap.numberOfTapsRequired = 1
+        view?.addGestureRecognizer(tap)
     }
     
     @objc func didSwipe(sender: UISwipeGestureRecognizer) {
@@ -103,11 +113,48 @@ class BaseGameScene: SKScene {
         })
         self.touchedPin.run(.sequence(actions))
     }
+    @objc func didTap(sender: UITapGestureRecognizer) {
+        guard let touchedNode = self.touchedNode else { return }
+        print("tapped")
+        touchedNode.startMovement()
+        self.touchedNode = nil
+    }
 }
 extension BaseGameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print("contact")
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Player || contact.bodyB.categoryBitMask == PhysicsCategory.Player {
+            handlePlayerContact(contact: contact )
+        }
+        if (contact.bodyA.categoryBitMask == PhysicsCategory.Prize && contact.bodyB.categoryBitMask == PhysicsCategory.Player) || (contact.bodyB.categoryBitMask == PhysicsCategory.Prize && contact.bodyA.categoryBitMask == PhysicsCategory.Player) {
+            print("Win")
+            levelModel.player.removeAllActions()
+            levelModel.player.physicsBody = nil
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let gameOverScene = GameOverScene(size: self.size, won: true)
+            gameOverScene.transitionDelegate = transitionDelegate
+            self.view?.presentScene(gameOverScene, transition: reveal)
+        }
+    }
+    
+    func handlePlayerContact(contact: SKPhysicsContact) {
+        var playerBody: SKPhysicsBody
+        var otherBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Player {
+            playerBody = contact.bodyA
+            otherBody = contact.bodyB
+        } else {
+            playerBody = contact.bodyB
+            otherBody = contact.bodyA
+        }
+        
+        switch otherBody.categoryBitMask {
+        case PhysicsCategory.GameFrame, PhysicsCategory.Pin:
+            levelModel.player.changeDirection()
+        default:
+            break
+        }
     }
 }
 
