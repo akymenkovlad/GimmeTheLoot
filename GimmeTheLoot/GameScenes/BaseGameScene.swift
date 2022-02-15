@@ -106,11 +106,11 @@ class BaseGameScene: SKScene {
         var actions = [SKAction]()
         actions.append(.move(by: vector, duration: 0.3))
         actions.append(.wait(forDuration: 0.5))
-        actions.append(.run { [weak self] in
-            guard let self = self else { return }
-            self.touchedPin.removeFromParent()
-            self.touchedPin = nil
-        })
+//        actions.append(.run { [weak self] in
+//            guard let self = self else { return }
+//            self.touchedPin.removeFromParent()
+//            self.touchedPin = nil
+//        })
         self.touchedPin.run(.sequence(actions))
     }
     @objc func didTap(sender: UITapGestureRecognizer) {
@@ -119,6 +119,18 @@ class BaseGameScene: SKScene {
         touchedNode.startMovement()
         self.touchedNode = nil
     }
+    
+    func moveToGameOverScene(with result: Bool) {
+        levelModel.player.removeAllActions()
+        levelModel.player.physicsBody = nil
+        self.hud.restartButtonAction = nil
+        self.hud.menuButtonAction = nil
+        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+        let gameOverScene = GameOverScene(size: self.size, won: result, level: currentLevel)
+        gameOverScene.transitionDelegate = transitionDelegate
+        self.view?.presentScene(gameOverScene, transition: reveal)
+    }
+    
     deinit{
         print("GameScene deinited")
     }
@@ -129,15 +141,11 @@ extension BaseGameScene: SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == PhysicsCategory.Player || contact.bodyB.categoryBitMask == PhysicsCategory.Player {
             handlePlayerContact(contact: contact )
         }
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Enemy || contact.bodyB.categoryBitMask == PhysicsCategory.Enemy {
+            handleEnemyContact(contact: contact )
+        }
         if (contact.bodyA.categoryBitMask == PhysicsCategory.Prize && contact.bodyB.categoryBitMask == PhysicsCategory.Player) || (contact.bodyB.categoryBitMask == PhysicsCategory.Prize && contact.bodyA.categoryBitMask == PhysicsCategory.Player) {
-            levelModel.player.removeAllActions()
-            levelModel.player.physicsBody = nil
-            self.hud.restartButtonAction = nil
-            self.hud.menuButtonAction = nil
-            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: true, level: currentLevel)
-            gameOverScene.transitionDelegate = transitionDelegate
-            self.view?.presentScene(gameOverScene, transition: reveal)
+            moveToGameOverScene(with: true)
         }
     }
     
@@ -156,10 +164,30 @@ extension BaseGameScene: SKPhysicsContactDelegate {
         switch otherBody.categoryBitMask {
         case PhysicsCategory.GameFrame, PhysicsCategory.Pin:
             levelModel.player.changeDirection()
+        case PhysicsCategory.Enemy, PhysicsCategory.Acid:
+            moveToGameOverScene(with: false)
         default:
             break
         }
     }
-
+    func handleEnemyContact(contact: SKPhysicsContact) {
+        var playerBody: SKPhysicsBody
+        var otherBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Enemy {
+            playerBody = contact.bodyA
+            otherBody = contact.bodyB
+        } else {
+            playerBody = contact.bodyB
+            otherBody = contact.bodyA
+        }
+        
+        switch otherBody.categoryBitMask {
+        case PhysicsCategory.GameFrame, PhysicsCategory.Pin, PhysicsCategory.Prize:
+            levelModel.enemy.changeDirection()
+        default:
+            break
+        }
+    }
 }
 

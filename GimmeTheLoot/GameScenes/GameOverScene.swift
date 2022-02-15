@@ -43,10 +43,10 @@ class GameOverScene: SKScene {
         
         switch won {
         case true:
-            if level >= defaults.integer(forKey: "userLevel") {
+            if level >= defaults.integer(forKey: "userLevel") && level < NumberOfLevels {
                 defaults.set(level + 1, forKey: "userLevel")
             }
-            if level < defaults.integer(forKey: "maxLevel") {
+            if level < NumberOfLevels {
                 nextLevelButton.position = CGPoint(x: size.width / 2, y: menuButton.position.y - 150)
                 addChild(nextLevelButton)
             }

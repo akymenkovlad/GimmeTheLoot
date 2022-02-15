@@ -19,8 +19,6 @@ class GameViewController: UIViewController {
         let sceneNode = LevelScene(size: view.frame.size, level: level)
         sceneNode.scaleMode = .aspectFill
         sceneNode.transitionDelegate = self as TransitionDelegate
-        
-        print("aded delegate")
         if let view = self.view as! SKView? {
             view.presentScene(sceneNode)
             view.ignoresSiblingOrder = true
@@ -52,7 +50,6 @@ extension GameViewController: TransitionDelegate {
     func returnToLevelsViewController() {
         if let view = self.view as! SKView? {
             view.presentScene(nil)
-            print("removed")
         }
         self.dismiss(animated: true, completion: nil)
     }

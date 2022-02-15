@@ -14,17 +14,18 @@ public class PlayerNode: SKSpriteNode {
     private let walkFrames: [SKTexture] = []
     private(set) var isMovingRight = true
     private(set) var isMoving = false
-    private let movementSpeed: CGFloat = 100
+    private let movementSpeed: CGFloat = 150
     
     public static func newInstance() -> PlayerNode {
         let node = PlayerNode(texture: nil,
                               color: .blue,
-                              size: CGSize(width: 70,
-                                           height: 100))
+                              size: CGSize(width: 50,
+                                           height: 50))
         node.name = "player"
-        node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+        node.physicsBody?.allowsRotation = false
         node.physicsBody?.categoryBitMask = PhysicsCategory.Player
-        node.physicsBody?.contactTestBitMask = PhysicsCategory.Pin | PhysicsCategory.GameFrame
+        node.physicsBody?.contactTestBitMask = PhysicsCategory.Pin | PhysicsCategory.GameFrame | PhysicsCategory.Enemy | PhysicsCategory.Acid
         
         //TO DO
         // ADD colision and testcontact bit masks

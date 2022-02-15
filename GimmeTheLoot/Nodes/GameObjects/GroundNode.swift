@@ -23,4 +23,7 @@ public class GroundNode: SKSpriteNode {
         
         return node
     }
+    public func setAngle(_ angle: CGFloat) {
+        self.zRotation = angle
+    }
 }

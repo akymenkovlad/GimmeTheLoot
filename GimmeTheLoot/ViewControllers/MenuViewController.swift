@@ -15,7 +15,6 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         
         let defaults = UserDefaults.standard
-        defaults.register(defaults: ["maxLevel": 3])
         defaults.register(defaults: ["userLevel": 1])
         SoundManager.sharedInstance.startPlaying()
         if SoundManager.sharedInstance.isMuted {

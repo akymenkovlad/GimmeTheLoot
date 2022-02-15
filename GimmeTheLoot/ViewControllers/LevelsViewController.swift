@@ -19,9 +19,9 @@ class LevelsViewController: UIViewController {
         levelCollectionView.dataSource = self
         levelCollectionView.delegate = self
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         levelCollectionView.reloadData()
     }
     
@@ -32,7 +32,7 @@ class LevelsViewController: UIViewController {
 }
 extension LevelsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return defaults.integer(forKey: "maxLevel")
+        return NumberOfLevels
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

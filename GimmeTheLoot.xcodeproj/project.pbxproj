@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		911DB5A327B4003900973E8C /* GroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DB5A227B4003900973E8C /* GroundNode.swift */; };
 		913215FF27B97D5100E7082E /* LevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913215FE27B97D5100E7082E /* LevelCollectionViewCell.swift */; };
+		913DB85E27BBD3DA00CD9279 /* BoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913DB85D27BBD3DA00CD9279 /* BoxNode.swift */; };
+		913DB86027BBD9FE00CD9279 /* BoulderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913DB85F27BBD9FE00CD9279 /* BoulderNode.swift */; };
 		9141842227B3D56A00F187B6 /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9141842127B3D56A00F187B6 /* LevelScene.swift */; };
 		9141842727B3E4B900F187B6 /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9141842627B3E4B900F187B6 /* EnemyNode.swift */; };
 		9141842927B3E53300F187B6 /* PrizeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9141842827B3E53300F187B6 /* PrizeNode.swift */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		911DB5A227B4003900973E8C /* GroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundNode.swift; sourceTree = "<group>"; };
 		913215FE27B97D5100E7082E /* LevelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCollectionViewCell.swift; sourceTree = "<group>"; };
+		913DB85D27BBD3DA00CD9279 /* BoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxNode.swift; sourceTree = "<group>"; };
+		913DB85F27BBD9FE00CD9279 /* BoulderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderNode.swift; sourceTree = "<group>"; };
 		9141842127B3D56A00F187B6 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = "<group>"; };
 		9141842627B3E4B900F187B6 /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
 		9141842827B3E53300F187B6 /* PrizeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeNode.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				9141842827B3E53300F187B6 /* PrizeNode.swift */,
 				9141842A27B3EB4F00F187B6 /* AcidNode.swift */,
 				911DB5A227B4003900973E8C /* GroundNode.swift */,
+				913DB85D27BBD3DA00CD9279 /* BoxNode.swift */,
+				913DB85F27BBD9FE00CD9279 /* BoulderNode.swift */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				911DB5A327B4003900973E8C /* GroundNode.swift in Sources */,
+				913DB86027BBD9FE00CD9279 /* BoulderNode.swift in Sources */,
 				9141842B27B3EB4F00F187B6 /* AcidNode.swift in Sources */,
 				91ECF14827B2887B0093F981 /* LevelsViewController.swift in Sources */,
 				91D72B4C27B2540900FB24A7 /* BaseGameScene.swift in Sources */,
@@ -292,6 +299,7 @@
 				91ECF13927B277C40093F981 /* PlayerNode.swift in Sources */,
 				91D72B4627B2540900FB24A7 /* AppDelegate.swift in Sources */,
 				9141842727B3E4B900F187B6 /* EnemyNode.swift in Sources */,
+				913DB85E27BBD3DA00CD9279 /* BoxNode.swift in Sources */,
 				91ECF13B27B2789D0093F981 /* Constants.swift in Sources */,
 				91ECF13727B26F7F0093F981 /* HudNode.swift in Sources */,
 				913215FF27B97D5100E7082E /* LevelCollectionViewCell.swift in Sources */,

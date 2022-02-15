@@ -29,7 +29,7 @@ class LevelScene: BaseGameScene {
         hud.restartButtonAction = {
             print("restart level")
             for child in self.children {
-                if child.name == "player" || child.name == "pin" || child.name == "prize" ||  child.name == "ground" {
+                if child.name == "player" || child.name == "pin" || child.name == "prize" ||  child.name == "ground" || child.name == "enemy" || child.name == "box" {
                     child.removeFromParent()
                 }
             }
@@ -46,6 +46,15 @@ class LevelScene: BaseGameScene {
         }
         for pin in levelModel.pins {
             addChild(pin)
+        }
+        if levelModel.enemy != nil {
+            addChild(levelModel.enemy)
+        }
+        if levelModel.acid != nil {
+            addChild(levelModel.acid)
+        }
+        if levelModel.box != nil {
+            addChild(levelModel.box)
         }
         addChild(levelModel.player)
         addChild(levelModel.prize)
@@ -67,5 +76,7 @@ class LevelScene: BaseGameScene {
         if levelModel.player.isMoving {
             levelModel.player.updatePosition()
         }
+        guard let enemy = levelModel.enemy else { return }
+        enemy.updatePosition()
     }
 }

@@ -9,8 +9,8 @@ import SpriteKit
 
 public class AcidNode: SKShapeNode {
     
-    public static func newInstance() -> AcidNode {
-        let size = CGSize(width: 100,height: 30)
+    public static func newInstance(with size: CGSize) -> AcidNode {
+        let size = CGSize(width: size.width ,height: size.height)
         let node = AcidNode(rectOf: size)
         node.name = "acid"
         node.physicsBody = SKPhysicsBody(rectangleOf: size)
