@@ -15,13 +15,12 @@ public class AcidNode: SKShapeNode {
         node.name = "acid"
         node.physicsBody = SKPhysicsBody(rectangleOf: size)
         node.physicsBody?.categoryBitMask = PhysicsCategory.Acid
+        node.physicsBody?.contactTestBitMask = PhysicsCategory.Boulder | PhysicsCategory.Player
         node.physicsBody?.isDynamic = false
         let emitter = SKEmitterNode(fileNamed: "Acid")!
-        emitter.particlePositionRange = CGVector(dx: size.width, dy: size.height + 5)
+        emitter.particlePositionRange = CGVector(dx: size.width, dy: size.height * 5)
         node.addChild(emitter)
-        emitter.position.y += 20
-        //TO DO
-        // ADD colision and testcontact bit masks
+        emitter.position.y += size.height * 5
         
         return node
     }

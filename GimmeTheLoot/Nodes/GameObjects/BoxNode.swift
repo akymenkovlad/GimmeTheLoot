@@ -15,6 +15,7 @@ public class BoxNode: SKSpriteNode {
         node.name = "box"
         node.physicsBody = SKPhysicsBody(rectangleOf: size)
         node.physicsBody?.categoryBitMask = PhysicsCategory.Box
+        node.physicsBody?.density = 1000
         
         return node
     }

@@ -18,7 +18,8 @@
 		915191D127B67F6400FC8765 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915191D027B67F6400FC8765 /* GameOverScene.swift */; };
 		915191D327B68CB700FC8765 /* LevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915191D227B68CB700FC8765 /* LevelModel.swift */; };
 		9181169927B971440053D87D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9181169827B971440053D87D /* SoundManager.swift */; };
-		9181169C27B973DE0053D87D /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9181169B27B973DE0053D87D /* background.mp3 */; };
+		91C4685727BE85A400F10EB8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 91C4685627BE85A400F10EB8 /* background.mp3 */; };
+		91D4380F27BFEB9E00AA2EAC /* PlatformNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4380E27BFEB9E00AA2EAC /* PlatformNode.swift */; };
 		91D72B4627B2540900FB24A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D72B4527B2540900FB24A7 /* AppDelegate.swift */; };
 		91D72B4C27B2540900FB24A7 /* BaseGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D72B4B27B2540900FB24A7 /* BaseGameScene.swift */; };
 		91D72B4E27B2540900FB24A7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D72B4D27B2540900FB24A7 /* GameViewController.swift */; };
@@ -49,7 +50,8 @@
 		915191D027B67F6400FC8765 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		915191D227B68CB700FC8765 /* LevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelModel.swift; sourceTree = "<group>"; };
 		9181169827B971440053D87D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		9181169B27B973DE0053D87D /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = background.mp3; path = ../../../../Downloads/background.mp3; sourceTree = "<group>"; };
+		91C4685627BE85A400F10EB8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		91D4380E27BFEB9E00AA2EAC /* PlatformNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformNode.swift; sourceTree = "<group>"; };
 		91D72B4227B2540900FB24A7 /* GimmeTheLoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GimmeTheLoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D72B4527B2540900FB24A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D72B4B27B2540900FB24A7 /* BaseGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGameScene.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				911DB5A227B4003900973E8C /* GroundNode.swift */,
 				913DB85D27BBD3DA00CD9279 /* BoxNode.swift */,
 				913DB85F27BBD9FE00CD9279 /* BoulderNode.swift */,
+				91D4380E27BFEB9E00AA2EAC /* PlatformNode.swift */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -116,7 +119,7 @@
 		9181169A27B973C20053D87D /* SoundEffects */ = {
 			isa = PBXGroup;
 			children = (
-				9181169B27B973DE0053D87D /* background.mp3 */,
+				91C4685627BE85A400F10EB8 /* background.mp3 */,
 			);
 			path = SoundEffects;
 			sourceTree = "<group>";
@@ -273,8 +276,8 @@
 				91D72B5127B2540900FB24A7 /* Main.storyboard in Resources */,
 				91D72B5327B2540B00FB24A7 /* Assets.xcassets in Resources */,
 				91D72B5627B2540B00FB24A7 /* LaunchScreen.storyboard in Resources */,
-				9181169C27B973DE0053D87D /* background.mp3 in Resources */,
 				91ECF14427B283860093F981 /* Assets.xcassets in Resources */,
+				91C4685727BE85A400F10EB8 /* background.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +297,7 @@
 				9141842227B3D56A00F187B6 /* LevelScene.swift in Sources */,
 				915191D327B68CB700FC8765 /* LevelModel.swift in Sources */,
 				9141842927B3E53300F187B6 /* PrizeNode.swift in Sources */,
+				91D4380F27BFEB9E00AA2EAC /* PlatformNode.swift in Sources */,
 				91ECF13F27B27FCB0093F981 /* PinNode.swift in Sources */,
 				91D72B4E27B2540900FB24A7 /* GameViewController.swift in Sources */,
 				91ECF13927B277C40093F981 /* PlayerNode.swift in Sources */,

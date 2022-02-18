@@ -16,40 +16,37 @@ public class PlayerNode: SKSpriteNode {
     private(set) var isMoving = false
     private let movementSpeed: CGFloat = 150
     
-    public static func newInstance() -> PlayerNode {
+    public static func newInstance(with size: CGSize) -> PlayerNode {
         let node = PlayerNode(texture: nil,
                               color: .blue,
-                              size: CGSize(width: 50,
-                                           height: 50))
+                              size: CGSize(width: size.width,
+                                           height: size.height))
         node.name = "player"
-        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2, center: CGPoint(x: 0, y: -size.width / 4))
         node.physicsBody?.allowsRotation = false
         node.physicsBody?.categoryBitMask = PhysicsCategory.Player
-        node.physicsBody?.contactTestBitMask = PhysicsCategory.Pin | PhysicsCategory.GameFrame | PhysicsCategory.Enemy | PhysicsCategory.Acid
-        
-        //TO DO
-        // ADD colision and testcontact bit masks
+        node.physicsBody?.contactTestBitMask = PhysicsCategory.Pin | PhysicsCategory.GameFrame | PhysicsCategory.Enemy | PhysicsCategory.Acid | PhysicsCategory.Platform
         return node
     }
     
     public func updatePosition() {
-//            if action(forKey: walkingActionKey) == nil {
-//                let walkingAction = SKAction.repeatForever(
-//                    SKAction.animate(with: walkFrames,
-//                                     timePerFrame: 0.1,
-//                                     resize: false,
-//                                     restore: true))
-//                run(walkingAction, withKey:walkingActionKey)
-//            }
-            if isMovingRight {
-                //Move right
-                physicsBody?.velocity.dx = movementSpeed
-                xScale = -1
-            } else {
-                //Move left
-                physicsBody?.velocity.dx = -movementSpeed
-                xScale = 1
-            }
+        //            if action(forKey: walkingActionKey) == nil {
+        //                let walkingAction = SKAction.repeatForever(
+        //                    SKAction.animate(with: walkFrames,
+        //                                     timePerFrame: 0.1,
+        //                                     resize: false,
+        //                                     restore: true))
+        //                run(walkingAction, withKey:walkingActionKey)
+        //            }
+        if isMovingRight {
+            //Move right
+            physicsBody?.velocity.dx = movementSpeed
+            xScale = -1
+        } else {
+            //Move left
+            physicsBody?.velocity.dx = -movementSpeed
+            xScale = 1
+        }
     }
     public func changeDirection() {
         isMovingRight = !isMovingRight

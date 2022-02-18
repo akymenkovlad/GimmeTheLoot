@@ -21,7 +21,7 @@ class LevelScene: BaseGameScene {
     
     
     override func didMove(to view: SKView) {
-        super.didMove(to: view) //
+        super.didMove(to: view)
         levelModel.configureScene(in: currentLevel, frame: gameFrame.frame)
         configureLevelObjects()
         
@@ -29,7 +29,7 @@ class LevelScene: BaseGameScene {
         hud.restartButtonAction = {
             print("restart level")
             for child in self.children {
-                if child.name == "player" || child.name == "pin" || child.name == "prize" ||  child.name == "ground" || child.name == "enemy" || child.name == "box" {
+                if child.name == "player" || child.name == "pin" || child.name == "prize" ||  child.name == "ground" || child.name == "enemy" || child.name == "box" || child.name == "boulder" {
                     child.removeFromParent()
                 }
             }
@@ -55,6 +55,12 @@ class LevelScene: BaseGameScene {
         }
         if levelModel.box != nil {
             addChild(levelModel.box)
+        }
+        if levelModel.boulder != nil {
+            addChild(levelModel.boulder)
+        }
+        if levelModel.platform != nil {
+            addChild(levelModel.platform)
         }
         addChild(levelModel.player)
         addChild(levelModel.prize)

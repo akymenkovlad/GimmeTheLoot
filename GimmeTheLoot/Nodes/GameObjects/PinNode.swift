@@ -9,7 +9,7 @@ import SpriteKit
 
 public class PinNode: SKSpriteNode {
     
-    private(set) var direction:PinDirections = .left
+    private(set) var direction: Directions = .left
     private var shift: CGFloat {
         get {
             self.size.width * 0.8
@@ -17,7 +17,7 @@ public class PinNode: SKSpriteNode {
     }
     private(set) var wasMoved = false
     
-    public static func newInstance(with size: CGSize, direction: PinDirections) -> PinNode {
+    public static func newInstance(with size: CGSize, direction: Directions) -> PinNode {
         let node = PinNode(texture: SKTexture(imageNamed: "pin"),
                            color: .yellow,
                            size: CGSize(width: size.width,
@@ -28,8 +28,6 @@ public class PinNode: SKSpriteNode {
         node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
         node.physicsBody?.isDynamic = false
         node.physicsBody?.categoryBitMask = PhysicsCategory.Pin
-        //TO DO
-        // ADD colision and testcontact bit masks
         return node
     }
     

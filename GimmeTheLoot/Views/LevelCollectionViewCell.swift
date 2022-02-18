@@ -19,7 +19,7 @@ class LevelCollectionViewCell: UICollectionViewCell {
     
     func configure(with level: Int) {
         levelLabel.text = "Level \(level)"
-        levelLabel.font = UIFont(name: "Chalkduster", size: 30)
+        levelLabel.font = UIFont(name: "Chalkduster", size: 25)
         levelLabel.textAlignment = .center
         levelLabel.textColor = .white
         

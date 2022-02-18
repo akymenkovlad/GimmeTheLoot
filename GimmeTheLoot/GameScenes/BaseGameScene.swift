@@ -144,6 +144,9 @@ extension BaseGameScene: SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == PhysicsCategory.Enemy || contact.bodyB.categoryBitMask == PhysicsCategory.Enemy {
             handleEnemyContact(contact: contact )
         }
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Acid || contact.bodyB.categoryBitMask == PhysicsCategory.Acid {
+            handleAcidContact(contact: contact )
+        }
         if (contact.bodyA.categoryBitMask == PhysicsCategory.Prize && contact.bodyB.categoryBitMask == PhysicsCategory.Player) || (contact.bodyB.categoryBitMask == PhysicsCategory.Prize && contact.bodyA.categoryBitMask == PhysicsCategory.Player) {
             moveToGameOverScene(with: true)
         }
@@ -171,20 +174,42 @@ extension BaseGameScene: SKPhysicsContactDelegate {
         }
     }
     func handleEnemyContact(contact: SKPhysicsContact) {
-        var playerBody: SKPhysicsBody
+        var enemyBody: SKPhysicsBody
         var otherBody: SKPhysicsBody
         
         if contact.bodyA.categoryBitMask == PhysicsCategory.Enemy {
-            playerBody = contact.bodyA
+            enemyBody = contact.bodyA
             otherBody = contact.bodyB
         } else {
-            playerBody = contact.bodyB
+            enemyBody = contact.bodyB
             otherBody = contact.bodyA
         }
         
         switch otherBody.categoryBitMask {
         case PhysicsCategory.GameFrame, PhysicsCategory.Pin, PhysicsCategory.Prize:
             levelModel.enemy.changeDirection()
+        case PhysicsCategory.Boulder:
+            otherBody.node?.removeFromParent()
+            enemyBody.node?.removeFromParent()
+        default:
+            break
+        }
+    }
+    func handleAcidContact(contact: SKPhysicsContact) {
+        var enemyBody: SKPhysicsBody
+        var otherBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Acid {
+            enemyBody = contact.bodyA
+            otherBody = contact.bodyB
+        } else {
+            enemyBody = contact.bodyB
+            otherBody = contact.bodyA
+        }
+        
+        switch otherBody.categoryBitMask {
+        case PhysicsCategory.Boulder:
+            otherBody.node?.removeFromParent()
         default:
             break
         }

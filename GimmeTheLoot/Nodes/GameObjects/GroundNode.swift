@@ -18,8 +18,7 @@ public class GroundNode: SKSpriteNode {
         node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
         node.physicsBody?.isDynamic = false
         node.physicsBody?.categoryBitMask = PhysicsCategory.Ground
-        //TO DO
-        // ADD colision and testcontact bit masks
+        node.physicsBody?.collisionBitMask = PhysicsCategory.Prize | PhysicsCategory.Enemy | PhysicsCategory.Player 
         
         return node
     }

@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 let MuteKey = "MUTED"
-let NumberOfLevels = 4
+let NumberOfLevels = 6
 
 struct PhysicsCategory {
     static let Player: UInt32 = 0x1 << 1
@@ -21,9 +21,10 @@ struct PhysicsCategory {
     static let Acid: UInt32 = 0x1 << 7
     static let Box: UInt32 = 0x1 << 8
     static let Boulder: UInt32 = 0x1 << 9
+    static let Platform: UInt32 = 0x1 << 10
 }
 
-public enum PinDirections {
+public enum Directions {
     case left
     case right
     case up
