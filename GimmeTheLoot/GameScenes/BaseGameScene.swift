@@ -55,7 +55,7 @@ class BaseGameScene: SKScene {
         
         gameFrame = GameFrameNode.newInstance(with: size)
         gameFrame.position = CGPoint(x: size.width / 2,
-                                     y: size.height / 2 - 25 )
+                                     y: size.height / 2)
         addChild(gameFrame)
         
         setupSwipes()

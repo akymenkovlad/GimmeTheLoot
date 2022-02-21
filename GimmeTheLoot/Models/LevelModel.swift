@@ -12,10 +12,10 @@ class LevelModel   {
     var player: PlayerNode!
     var pins: [PinNode]! = []
     var prize: PrizeNode!
-    var acid: AcidNode!
+    var acid: [AcidNode]! = []
     var enemy: EnemyNode!
     var ground: [GroundNode]! = []
-    var box: BoxNode!
+    var box: [BoxNode]! = []
     var boulder: BoulderNode!
     var platform: PlatformNode!
     
@@ -63,12 +63,12 @@ class LevelModel   {
                                      y:  groundsPositions[2].y - (groundsSize[0].height - pinSize.height) / 2)]
             pinsDirections = [.left]
             
-            acid = AcidNode.newInstance(with: CGSize(width: frame.width * 0.3, height: frame.height * 0.01))
-            acid.position = CGPoint(x: frame.minX + frame.width * 0.55, y: frame.minY + acid.frame.height / 2)
+            acid.append(AcidNode.newInstance(with: CGSize(width: frame.width * 0.3, height: frame.height * 0.01)))
+            acid[0].position = CGPoint(x: frame.minX + frame.width * 0.55, y: frame.minY + acid[0].frame.height / 2)
             
-            box = BoxNode.newInstance(with: CGSize(width: frame.width * 0.25, height: frame.height * 0.09))
-            box.position = CGPoint(x: acid.position.x,
-                                   y: pinsPositions[0].y + (pinSize.width + box.size.height) / 2)
+            box.append(BoxNode.newInstance(with: CGSize(width: frame.width * 0.25, height: frame.height * 0.09)))
+            box[0].position = CGPoint(x: acid[0].position.x,
+                                   y: pinsPositions[0].y + (pinSize.width + box[0].size.height) / 2)
             
             player.position = CGPoint(x: frame.minX +  player.size.width,
                                       y:  groundsPositions[0].y + (groundsSize[0].height + player.size.height) / 2)
@@ -77,11 +77,11 @@ class LevelModel   {
         case 3:
             groundsSize = [
                 CGSize(width: frame.width, height: frame.height * 0.1),
-                CGSize(width: frame.width * 0.75 , height: frame.height * 0.1)
+                CGSize(width: frame.width * 0.75 , height: frame.height * 0.05)
             ]
             groundsPositions = [
-                CGPoint(x: frame.midX, y: frame.minY + frame.height * 0.075),
-                CGPoint(x: frame.minX + frame.width * 0.375, y: frame.minY + frame.height * 0.65)
+                CGPoint(x: frame.midX, y: frame.minY + frame.height * 0.05),
+                CGPoint(x: frame.minX + frame.width * 0.375, y: frame.minY + frame.height * 0.6)
             ]
             pinsPositions = [CGPoint(x: frame.midX,
                                      y:  groundsPositions[0].y + (groundsSize[0].height + pinSize.width) / 2),
@@ -90,7 +90,7 @@ class LevelModel   {
             pinsDirections = [.down, .left]
             
             platform = PlatformNode.newInstance(with: CGSize(width: frame.width * 0.2, height: frame.height * 0.025))
-            platform.position = CGPoint(x: frame.maxX - frame.width * 0.15, y: frame.minX + frame.height * 0.2)
+            platform.position = CGPoint(x: frame.maxX - frame.width * 0.15, y: frame.minY + frame.height * 0.1)
             platform.movePlatform(by: frame.height * 0.55, in: .up)
             
             player.position = CGPoint(x: frame.minX +  player.size.width,
@@ -127,9 +127,9 @@ class LevelModel   {
                 //1
                 CGSize(width: frame.width * 0.25, height: frame.height * 0.2),
                 //2
-                CGSize(width: frame.width * 0.25, height: frame.height * 0.025),
+                CGSize(width: frame.width * 0.23, height: frame.height * 0.025),
                 //3
-                CGSize(width: frame.width * 0.25, height: frame.height * 0.03),
+                CGSize(width: frame.width * 0.23, height: frame.height * 0.03),
                 //4
                 CGSize(width: player.size.width + pinSize.height + 5, height: frame.height * 0.50),
                 //5
@@ -174,9 +174,9 @@ class LevelModel   {
                 .down,
                 .right
             ]
-            box = BoxNode.newInstance(with: CGSize(width: frame.height * 0.125, height: frame.height * 0.125))
-            box.position = CGPoint(x: frame.width * 0.75,
-                                   y: frame.maxY - box.size.height / 2)
+            box.append(BoxNode.newInstance(with: CGSize(width: frame.height * 0.12, height: frame.height * 0.12)))
+            box[0].position = CGPoint(x: frame.width * 0.75,
+                                   y: frame.maxY - box[0].size.height / 2)
             
             boulder = BoulderNode.newInstance(with: frame.height * 0.09)
             boulder.position = CGPoint(x: frame.maxX - frame.width * 0.125, y: frame.maxY - frame.height * 0.26 + 5)
@@ -185,13 +185,81 @@ class LevelModel   {
             enemy.position = CGPoint(x: frame.minX + frame.width * 0.35,
                                      y: frame.minY + frame.height * 0.45)
             
-            acid = AcidNode.newInstance(with: CGSize(width: frame.width * 0.25, height: frame.height * 0.01))
-            acid.position = CGPoint(x: frame.maxX - frame.width * 0.375, y: frame.minY + frame.height * 0.27)
+            acid.append(AcidNode.newInstance(with: CGSize(width: frame.width * 0.25, height: frame.height * 0.01)))
+            acid[0].position = CGPoint(x: frame.maxX - frame.width * 0.375, y: frame.minY + frame.height * 0.27)
             
             player.position = CGPoint(x: frame.minX + 5 + frame.size.width * 0.05,
                                       y:  frame.minY + frame.height * 0.55)
             prize.position =  CGPoint(x: frame.maxX - frame.size.width * 0.1,
                                       y: frame.minY + frame.height * 0.44)
+        case 6:
+            groundsSize = [
+                //0 bottom ground
+                CGSize(width: frame.width * 0.15, height: frame.height * 0.1),
+                //1 bottom ground
+                CGSize(width: frame.width * 0.18, height: frame.height * 0.1),
+                //2 bottom ground
+                CGSize(width: frame.width * 0.25, height: frame.height * 0.1),
+                //3 middle ground
+                CGSize(width: frame.width * 0.55, height: frame.height * 0.05),
+                //4 middle helping ground
+                CGSize(width: 1, height: frame.height * 0.05),
+                //5 middle ground with angle
+                CGSize(width: frame.width * 0.25, height: frame.width * 0.05),
+                //6 middle helping ground left
+                CGSize(width: frame.width * 0.10, height: frame.width * 0.30),
+                //7 bottom ground
+                CGSize(width: frame.width * 0.10, height: frame.height * 0.025),
+                //8 up ground with angle
+                CGSize(width: frame.width * 0.25, height: frame.width * 0.05),
+            ]
+            groundsPositions = [
+                //0
+                CGPoint(x: frame.minX + frame.width * 0.075, y: frame.minY + frame.height * 0.075),
+                //1
+                CGPoint(x: frame.minX + frame.width * 0.45, y: frame.minY + frame.height * 0.075),
+                //2
+                CGPoint(x: frame.minX + frame.width * 0.875, y: frame.minY + frame.height * 0.075),
+                //3
+                CGPoint(x: frame.minX + frame.width * 0.275, y: frame.midY + frame.height * 0.2),
+                //4
+                CGPoint(x: frame.minX + frame.width * 0.55 + frame.height * 0.1 + 1 , y: frame.midY + frame.height * 0.20),
+                //5
+                CGPoint(x: frame.minX + frame.width * 0.85, y: frame.minY + frame.height * 0.5),
+                //6
+                CGPoint(x: frame.minX + frame.width * 0.05, y: frame.minY + frame.height * 0.35),
+                //7
+                CGPoint(x: frame.minX + frame.width * 0.45, y: frame.minY + frame.height * 0.35),
+                //8
+                CGPoint(x: frame.minX + frame.width * 0.1, y: frame.minY + frame.height * 0.75)
+            ]
+            pinsPositions = [
+                CGPoint(x: frame.minX + frame.width * 0.55 + frame.height * 0.1 - pinSize.width / 2,
+                        y: frame.midY + frame.height * 0.1 + pinSize.height / 2),
+                CGPoint(x: frame.minX + pinSize.width / 2, y: frame.maxY - frame.height * 0.08 - pinSize.height / 2)
+            ]
+            pinsDirections = [
+                .right,
+                .left
+            ]
+            
+            acid.append(AcidNode.newInstance(with: CGSize(width: frame.width * 0.2, height: frame.height * 0.01)))
+            acid.append(AcidNode.newInstance(with: CGSize(width: frame.width * 0.2, height: frame.height * 0.01)))
+            acid[0].position = CGPoint(x: frame.minX + frame.width * 0.25, y: frame.minY + frame.height * 0.02)
+            acid[1].position = CGPoint(x: frame.minX + frame.width * 0.65, y: frame.minY + frame.height * 0.02)
+            
+            box.append(BoxNode.newInstance(with: CGSize(width: frame.height * 0.1, height: frame.height * 0.1)))
+            box.append(BoxNode.newInstance(with: CGSize(width: frame.height * 0.1, height: frame.height * 0.1)))
+            box[0].position = CGPoint(x: frame.minX + frame.width * 0.45, y: frame.minY + frame.height * 0.4)
+            box[1].position = CGPoint(x: frame.minX + frame.width * 0.65, y: frame.midY + frame.height * 0.175)
+            
+            boulder = BoulderNode.newInstance(with: frame.height * 0.08)
+            boulder.position = CGPoint(x: frame.minX + frame.height * 0.05, y: frame.maxY - frame.height * 0.05)
+            
+            player.position = CGPoint(x: frame.minX + 5 + frame.size.width * 0.05,
+                                      y:  frame.minY + frame.height * 0.075 + playerSize.height / 2)
+            prize.position =  CGPoint(x: frame.maxX - frame.size.width * 0.05,
+                                      y: frame.minY + frame.height * 0.075 + prizeSize.height / 2)
         default:
             break
         }
@@ -213,6 +281,9 @@ class LevelModel   {
             enemy.startMovement()
         case 5:
             ground[3].physicsBody?.node?.zRotation = 0.1
+        case 6:
+            ground[5].physicsBody?.node?.zRotation = CGFloat.pi / 6
+            ground[8].physicsBody?.node?.zRotation = -CGFloat.pi / 6
         default:
             break
         }

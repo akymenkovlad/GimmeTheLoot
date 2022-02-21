@@ -41,8 +41,7 @@ class HudNode : SKNode {
         levelLabel.text = "Level"
         levelLabel.fontSize = 30
         levelLabel.fontColor = SKColor.white
-        levelLabel.position = CGPoint(x: size.width / 2, y: size.height - 50 - levelLabel.fontSize )
-        
+        levelLabel.position = CGPoint(x: size.width / 2, y: size.height / 2 + size.width * 0.75 - 30  + levelLabel.fontSize )
         addChild(levelLabel)
         addChild(menuButton)
         addChild(restartButton)

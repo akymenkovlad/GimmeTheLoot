@@ -13,6 +13,7 @@ class LevelScene: BaseGameScene {
     init(size: CGSize, level:Int) {
         super.init(size: size)
         currentLevel = level
+        print(self.size)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,11 +30,12 @@ class LevelScene: BaseGameScene {
         hud.restartButtonAction = {
             print("restart level")
             for child in self.children {
-                if child.name == "player" || child.name == "pin" || child.name == "prize" ||  child.name == "ground" || child.name == "enemy" || child.name == "box" || child.name == "boulder" {
+                if child.name == "player" || child.name == "pin" || child.name == "prize" ||  child.name == "ground" || child.name == "enemy" || child.name == "box" || child.name == "boulder" || child.name == "acid" {
                     child.removeFromParent()
                 }
             }
             self.levelModel = LevelModel()
+            
             self.levelModel.configureScene(in: self.currentLevel, frame: self.gameFrame.frame)
             self.configureLevelObjects()
         }
@@ -50,11 +52,16 @@ class LevelScene: BaseGameScene {
         if levelModel.enemy != nil {
             addChild(levelModel.enemy)
         }
+        
         if levelModel.acid != nil {
-            addChild(levelModel.acid)
+            for acid in levelModel.acid {
+                addChild(acid)
+            }
         }
         if levelModel.box != nil {
-            addChild(levelModel.box)
+            for box in levelModel.box {
+                addChild(box)
+            }
         }
         if levelModel.boulder != nil {
             addChild(levelModel.boulder)

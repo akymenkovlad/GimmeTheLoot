@@ -13,7 +13,7 @@ public class BoulderNode: SKSpriteNode {
         node.name = "boulder"
         node.physicsBody = SKPhysicsBody(circleOfRadius: radius / 2)
         node.physicsBody?.categoryBitMask = PhysicsCategory.Boulder
-        
+        node.physicsBody?.density = 1000
         return node
     }
 }

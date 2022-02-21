@@ -12,7 +12,7 @@ public class GameFrameNode: SKShapeNode {
     
     
     public static func newInstance(with size: CGSize) -> GameFrameNode {
-        let rectSize = CGSize(width: size.width - 50, height: size.height - 150)
+        let rectSize = CGSize(width: size.width - 20, height: size.width * 1.5 - 30)
         let  node = GameFrameNode(rectOf: rectSize)
         node.strokeColor = .red
         node.lineWidth = 2
