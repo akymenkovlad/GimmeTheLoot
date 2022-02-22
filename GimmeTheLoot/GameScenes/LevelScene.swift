@@ -30,7 +30,7 @@ class LevelScene: BaseGameScene {
         hud.restartButtonAction = {
             print("restart level")
             for child in self.children {
-                if child.name == "player" || child.name == "pin" || child.name == "prize" ||  child.name == "ground" || child.name == "enemy" || child.name == "box" || child.name == "boulder" || child.name == "acid" {
+                if child.name == "player" || child.name == "pin" || child.name == "prize" ||  child.name == "ground" || child.name == "enemy" || child.name == "box" || child.name == "boulder" || child.name == "acid" || child.name == "platform" {
                     child.removeFromParent()
                 }
             }
@@ -39,6 +39,7 @@ class LevelScene: BaseGameScene {
             self.levelModel.configureScene(in: self.currentLevel, frame: self.gameFrame.frame)
             self.configureLevelObjects()
         }
+        showTutorial()
     }
     
     public func configureLevelObjects() {
@@ -73,6 +74,19 @@ class LevelScene: BaseGameScene {
         addChild(levelModel.prize)
     }
     
+    public func showTutorial() {
+        switch currentLevel {
+        case 1,2,3,4:
+            tutorial = TutorialNode()
+            tutorial.setup()
+            tutorial.setTextForLabel(in: currentLevel, self.size)
+            addChild(tutorial)
+            break
+        default:
+            break
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let first = touches.first else { return }
         let location = first.location(in: self)
@@ -90,6 +104,8 @@ class LevelScene: BaseGameScene {
             levelModel.player.updatePosition()
         }
         guard let enemy = levelModel.enemy else { return }
+        guard levelModel.enemy.isMoving else { return }
         enemy.updatePosition()
+        
     }
 }

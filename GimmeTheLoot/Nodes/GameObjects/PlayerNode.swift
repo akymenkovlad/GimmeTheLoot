@@ -22,7 +22,7 @@ public class PlayerNode: SKSpriteNode {
                               size: CGSize(width: size.width,
                                            height: size.height))
         node.name = "player"
-        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2, center: CGPoint(x: 0, y: -size.width / 2))
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2, center: CGPoint(x: 0, y: -size.width * 0.3))
         node.physicsBody?.density = 100
         node.physicsBody?.allowsRotation = false
         node.physicsBody?.categoryBitMask = PhysicsCategory.Player

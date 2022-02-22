@@ -22,8 +22,9 @@ public class EnemyNode: SKSpriteNode {
                              size: CGSize(width: size.width,
                                           height: size.height))
         node.name = "enemy"
-        node.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2, center: CGPoint(x: 0, y: -size.width / 2))
+        node.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2, center: CGPoint(x: 0, y: -size.width * 0.3))
         node.physicsBody?.allowsRotation = false
+        node.physicsBody?.restitution = 0
         node.physicsBody?.categoryBitMask = PhysicsCategory.Enemy
         node.physicsBody?.contactTestBitMask = PhysicsCategory.Pin | PhysicsCategory.GameFrame | PhysicsCategory.Prize | PhysicsCategory.Boulder
         

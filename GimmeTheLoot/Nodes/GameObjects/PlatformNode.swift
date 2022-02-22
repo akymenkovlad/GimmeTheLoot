@@ -18,6 +18,7 @@ public class PlatformNode: SKSpriteNode {
         node.zPosition = 100
         node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
         node.physicsBody?.isDynamic = false
+        node.physicsBody?.restitution = 0
         node.physicsBody?.categoryBitMask = PhysicsCategory.Platform
         node.physicsBody?.collisionBitMask = PhysicsCategory.Enemy | PhysicsCategory.Player | PhysicsCategory.Boulder
         

@@ -17,6 +17,7 @@ class BaseGameScene: SKScene {
     
     var hud: HudNode!
     var gameFrame: GameFrameNode!
+    var tutorial: TutorialNode!
     
     var levelModel: LevelModel! = LevelModel()
     var currentLevel: Int!
@@ -106,11 +107,6 @@ class BaseGameScene: SKScene {
         var actions = [SKAction]()
         actions.append(.move(by: vector, duration: 0.3))
         actions.append(.wait(forDuration: 0.5))
-//        actions.append(.run { [weak self] in
-//            guard let self = self else { return }
-//            self.touchedPin.removeFromParent()
-//            self.touchedPin = nil
-//        })
         self.touchedPin.run(.sequence(actions))
     }
     @objc func didTap(sender: UITapGestureRecognizer) {

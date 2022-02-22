@@ -99,14 +99,16 @@ class LevelModel   {
                                       y: frame.maxY - prize.size.height / 2)
         case 4:
             groundsSize = [
-                CGSize(width: frame.width - 5, height: frame.height / 8),
-                CGSize(width: frame.width * 0.8 - 5, height: 40),
-                CGSize(width: frame.width * 0.4 - 5, height: 15)
+                CGSize(width: frame.width, height: frame.height / 8),
+                CGSize(width: frame.width * 0.8, height: 40),
+                CGSize(width: frame.width * 0.6, height: 15),
+                CGSize(width: frame.width * 0.3, height: 15),
             ]
             groundsPositions = [
                 CGPoint(x: frame.midX, y: frame.minY + frame.height / 14),
-                CGPoint(x: frame.minX + groundsSize[1].width / 2, y: frame.maxY - 200),
-                CGPoint(x: frame.maxX - groundsSize[2].width / 2, y: frame.maxY - 300)
+                CGPoint(x: frame.minX + groundsSize[1].width / 2, y: frame.minY + frame.height * 0.8),
+                CGPoint(x: frame.maxX - groundsSize[2].width / 2, y: frame.minY + frame.height * 0.55),
+                CGPoint(x: frame.minX + groundsSize[3].width / 2, y: frame.minY + frame.height * 0.4)
             ]
             pinsPositions = [CGPoint(x: frame.maxX - pinSize.width / 2,
                                      y:  groundsPositions[1].y - (groundsSize[1].height - pinSize.height) / 2)]
@@ -117,9 +119,9 @@ class LevelModel   {
             
             player.position = CGPoint(x: frame.minX + player.size.width,
                                       y:  groundsPositions[1].y + (groundsSize[1].height + player.size.height) / 2)
-            prize.position =  CGPoint(x: frame.minX + prize.size.width,
+            prize.position =  CGPoint(x: frame.maxX - prize.size.width,
                                       y: groundsPositions[0].y + prize.size.height / 2)
-            enemy.position = CGPoint(x: prize.position.x + (prize.size.width + enemy.size.width + 20) / 2, y: groundsPositions[0].y + enemy.size.height / 2)
+            enemy.position = CGPoint(x: prize.position.x -  enemy.size.width , y: groundsPositions[0].y + enemy.size.height / 2)
         case 5:
             groundsSize = [
                 //0
@@ -137,9 +139,7 @@ class LevelModel   {
                 //6
                 CGSize(width: frame.width * 0.50, height: frame.height * 0.265),
                 //7
-                CGSize(width: frame.width * 0.01, height: frame.height * 0.38),
-                //8
-                CGSize(width: frame.width * 0.15, height: frame.height * 0.02)
+                CGSize(width: frame.width * 0.01, height: frame.height * 0.38)
             ]
             groundsPositions = [
                 //0
@@ -157,9 +157,7 @@ class LevelModel   {
                 //6
                 CGPoint(x: frame.maxX - frame.width * 0.250, y: frame.minY + frame.height * 0.1325),
                 //7
-                CGPoint(x: frame.maxX - frame.width * 0.505, y: frame.minY + frame.height * 0.19),
-                //8
-                CGPoint(x: frame.minX + frame.width * 0.37, y: frame.minY + frame.height * 0.38)
+                CGPoint(x: frame.maxX - frame.width * 0.505, y: frame.minY + frame.height * 0.19)
             ]
             pinsPositions = [
                 CGPoint(x: frame.maxX - frame.width * 0.25 + pinSize.height / 2,
@@ -183,7 +181,11 @@ class LevelModel   {
             
             enemy = EnemyNode.newInstance(with: enemySize)
             enemy.position = CGPoint(x: frame.minX + frame.width * 0.35,
-                                     y: frame.minY + frame.height * 0.45)
+                                     y: frame.minY + frame.height * 0.15)
+            
+            platform = PlatformNode.newInstance(with: CGSize(width: frame.width * 0.15, height: frame.height * 0.02))
+            platform.position = CGPoint(x: frame.minX + frame.width * 0.37, y: frame.minY + frame.height * 0.10)
+            platform.movePlatform(by: frame.height * 0.55, in: .up)
             
             acid.append(AcidNode.newInstance(with: CGSize(width: frame.width * 0.25, height: frame.height * 0.01)))
             acid[0].position = CGPoint(x: frame.maxX - frame.width * 0.375, y: frame.minY + frame.height * 0.27)
