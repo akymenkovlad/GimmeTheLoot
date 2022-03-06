@@ -9,7 +9,14 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    @IBOutlet weak var soundButton: UIButton!
+    let soundButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 80, height: 80)
+        button.setImage(UIImage(named:"sound_on"), for: .normal)
+        button.addTarget(self, action: #selector(onSoundButtonPressed(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,24 +25,29 @@ class MenuViewController: UIViewController {
         defaults.register(defaults: ["userLevel": 1])
         SoundManager.sharedInstance.startPlaying()
         if SoundManager.sharedInstance.isMuted {
-            soundButton.setTitle("Sound Off", for: .normal)
+            soundButton.setImage(UIImage(named: "sound_off"), for: .normal)
         } else {
-            soundButton.setTitle("Sound On", for: .normal)
+            soundButton.setImage(UIImage(named: "sound_on"), for: .normal)
         }
+        view.addSubview(soundButton)
+        soundButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 100).isActive = true
+        soundButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
     }
-
+    
     @IBAction func toggleSoundButton(_ sender: Any) {
-        
+       
+       
+    }
+    @objc func onSoundButtonPressed(_ sender: Any) {
         if SoundManager.sharedInstance.toggleMute() {
-            soundButton.setTitle("Sound Off", for: .normal)
+            soundButton.setImage(UIImage(named: "sound_off"), for: .normal)
         } else {
-            soundButton.setTitle("Sound On", for: .normal)
+            soundButton.setImage(UIImage(named: "sound_on"), for: .normal)
         }
-        
     }
     @IBAction func goToLevelScreen(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let levelVC = storyboard.instantiateViewController(withIdentifier: "LevelsViewController") as! LevelsViewController
+        let levelVC = storyboard.instantiateViewController(withIdentifier: "LevelsViewController") as! LevelsCollectionViewController
         let navBar = UINavigationController(rootViewController: levelVC)
         navBar.modalTransitionStyle = .coverVertical
         navBar.modalPresentationStyle = .fullScreen

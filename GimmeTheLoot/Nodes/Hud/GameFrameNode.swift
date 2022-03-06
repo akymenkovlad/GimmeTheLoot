@@ -14,8 +14,7 @@ public class GameFrameNode: SKShapeNode {
     public static func newInstance(with size: CGSize) -> GameFrameNode {
         let rectSize = CGSize(width: size.width - 20, height: size.width * 1.5 - 30)
         let  node = GameFrameNode(rectOf: rectSize)
-        node.strokeColor = .red
-        node.lineWidth = 2
+        node.strokeColor = .clear
         var bodies: [SKPhysicsBody] = []
         bodies.append(SKPhysicsBody(rectangleOf: CGSize(width: 5,
                                                         height: node.frame.height),

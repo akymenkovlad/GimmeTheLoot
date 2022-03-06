@@ -182,6 +182,7 @@ class LevelModel   {
             enemy = EnemyNode.newInstance(with: enemySize)
             enemy.position = CGPoint(x: frame.minX + frame.width * 0.35,
                                      y: frame.minY + frame.height * 0.15)
+            enemy.xScale = -1
             
             platform = PlatformNode.newInstance(with: CGSize(width: frame.width * 0.15, height: frame.height * 0.02))
             platform.position = CGPoint(x: frame.minX + frame.width * 0.37, y: frame.minY + frame.height * 0.10)

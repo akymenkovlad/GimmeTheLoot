@@ -14,7 +14,7 @@ class TutorialNode : SKNode {
     //Setup hud here
     public func setup() {
         self.name = "tutorial"
-        levelLabel = SKLabelNode(fontNamed: "Chalkduster")
+        levelLabel = SKLabelNode(fontNamed: "Krungthep")
         levelLabel.text = ""
         levelLabel.numberOfLines = 10
         levelLabel.fontSize = 20
@@ -30,20 +30,21 @@ class TutorialNode : SKNode {
         move the obstacle
         2. Tap on player to
         start/stop movement
-        3. Get to the treasure
+        3. Take the treasure
         """
             levelLabel.position = CGPoint(x: size.width / 2, y: size.height * 0.65)
         case 2:
             levelLabel.text = """
         Avoid acid!
         """
-            levelLabel.position = CGPoint(x: size.width / 2, y: size.height * 0.2)
+            levelLabel.position = CGPoint(x: size.width / 2, y: size.height * 0.3)
         case 3:
             levelLabel.text = """
-        Use platform to
-        get to the treasure
+        Use platform
+        to get
+        the treasure
         """
-            levelLabel.position = CGPoint(x: size.width * 0.7 , y: size.height * 0.1)
+            levelLabel.position = CGPoint(x: size.width * 0.7 , y: size.height * 0.4)
         case 4:
             levelLabel.text = """
         Don't get caught by enemy!

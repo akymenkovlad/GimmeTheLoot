@@ -10,7 +10,7 @@ import SpriteKit
 public class GroundNode: SKSpriteNode {
     
     public static func newInstance(with size: CGSize) -> GroundNode {
-        let node = GroundNode(texture: nil,
+        let node = GroundNode(texture: SKTexture(imageNamed: "ground"),
                               color: .brown,
                               size: CGSize(width: size.width,
                                            height: size.height))

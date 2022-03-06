@@ -16,8 +16,14 @@ class GameOverScene: SKScene {
     private lazy var nextLevelButton: SKSpriteNode! = SKSpriteNode(texture: nextLevelButtonTexture, size: CGSize(width: 250, height: 100))
     
     private lazy var retryButtonTexture = SKTexture(imageNamed: "restart_button")
-    private var menuButtonTexture = SKTexture(imageNamed: "menu_button")
+    private var menuButtonTexture = SKTexture(imageNamed: "start_button")
     private lazy var nextLevelButtonTexture = SKTexture(imageNamed: "next_level_button")
+    
+    private lazy var loseButtonTexture = SKTexture(imageNamed: "lose_label")
+    private lazy var winButtonTexture = SKTexture(imageNamed: "win_label")
+    private var resultNode: SKSpriteNode!
+    
+    private var background: SKSpriteNode!
     
     private var level: Int!
     private let defaults = UserDefaults.standard
@@ -25,20 +31,19 @@ class GameOverScene: SKScene {
     init(size: CGSize, won: Bool, level: Int) {
         super.init(size: size)
         
-        backgroundColor = SKColor.white
-        
-        let message = won ? "You Won!" : "You Lose :["
-        
-        let label = SKLabelNode(fontNamed: "Chalkduster")
-        label.text = message
-        label.fontSize = 40
-        label.fontColor = SKColor.black
-        label.position = CGPoint(x: size.width/2, y: size.height/2)
-        addChild(label)
+        background = SKSpriteNode(texture: SKTexture(imageNamed: "background_1"), size: size)
+        background.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        background.zPosition = -100
+        addChild(background)
+        let texture = won ? winButtonTexture.size() : loseButtonTexture.size()
+        resultNode = SKSpriteNode(texture: won ? winButtonTexture : loseButtonTexture,
+                                  size: CGSize(width: texture.width / 2, height: texture.height / 2))
+        resultNode.position = CGPoint(x: size.width/2, y: size.height * 0.8)
+        addChild(resultNode)
         
         
         menuButton = SKSpriteNode(texture: menuButtonTexture, size: CGSize(width: 250, height: 100))
-        menuButton.position = CGPoint(x: size.width / 2, y: label.position.y - 100)
+        menuButton.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(menuButton)
         
         switch won {
@@ -47,11 +52,11 @@ class GameOverScene: SKScene {
                 defaults.set(level + 1, forKey: "userLevel")
             }
             if level < NumberOfLevels {
-                nextLevelButton.position = CGPoint(x: size.width / 2, y: menuButton.position.y - 150)
+                nextLevelButton.position = CGPoint(x: size.width / 2, y: menuButton.position.y - 125)
                 addChild(nextLevelButton)
             }
         case false:
-            retryButton.position = CGPoint(x: size.width / 2, y: menuButton.position.y - 150)
+            retryButton.position = CGPoint(x: size.width / 2, y: menuButton.position.y - 125)
             addChild(retryButton)
         }
         

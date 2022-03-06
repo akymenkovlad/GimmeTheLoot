@@ -13,7 +13,6 @@ class LevelScene: BaseGameScene {
     init(size: CGSize, level:Int) {
         super.init(size: size)
         currentLevel = level
-        print(self.size)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -100,11 +99,9 @@ class LevelScene: BaseGameScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if levelModel.player.isMoving {
-            levelModel.player.updatePosition()
-        }
+        levelModel.player.updatePosition()
+
         guard let enemy = levelModel.enemy else { return }
-        guard levelModel.enemy.isMoving else { return }
         enemy.updatePosition()
         
     }

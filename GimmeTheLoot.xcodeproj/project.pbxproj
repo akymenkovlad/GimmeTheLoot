@@ -19,6 +19,8 @@
 		915191D327B68CB700FC8765 /* LevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915191D227B68CB700FC8765 /* LevelModel.swift */; };
 		9181169927B971440053D87D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9181169827B971440053D87D /* SoundManager.swift */; };
 		91C4685727BE85A400F10EB8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 91C4685627BE85A400F10EB8 /* background.mp3 */; };
+		91D2CABD27D4C3C4005D595B /* LevelsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2CABC27D4C3C4005D595B /* LevelsCollectionViewController.swift */; };
+		91D36A9727D4B16A00247CFE /* Krungthep.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91D36A9627D4B16A00247CFE /* Krungthep.ttf */; };
 		91D4380F27BFEB9E00AA2EAC /* PlatformNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4380E27BFEB9E00AA2EAC /* PlatformNode.swift */; };
 		91D69E6227C503C200F3A74C /* TutorialNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D69E6127C503C200F3A74C /* TutorialNode.swift */; };
 		91D72B4627B2540900FB24A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D72B4527B2540900FB24A7 /* AppDelegate.swift */; };
@@ -36,7 +38,6 @@
 		91ECF14327B283860093F981 /* Acid.sks in Resources */ = {isa = PBXBuildFile; fileRef = 91ECF14127B283860093F981 /* Acid.sks */; };
 		91ECF14427B283860093F981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91ECF14227B283860093F981 /* Assets.xcassets */; };
 		91ECF14627B2879C0093F981 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ECF14527B2879C0093F981 /* MenuViewController.swift */; };
-		91ECF14827B2887B0093F981 /* LevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ECF14727B2887B0093F981 /* LevelsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,9 @@
 		915191D227B68CB700FC8765 /* LevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelModel.swift; sourceTree = "<group>"; };
 		9181169827B971440053D87D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		91C4685627BE85A400F10EB8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		91D2CABC27D4C3C4005D595B /* LevelsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsCollectionViewController.swift; sourceTree = "<group>"; };
+		91D36A9627D4B16A00247CFE /* Krungthep.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Krungthep.ttf; sourceTree = "<group>"; };
+		91D36A9827D4B19000247CFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		91D4380E27BFEB9E00AA2EAC /* PlatformNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformNode.swift; sourceTree = "<group>"; };
 		91D69E6127C503C200F3A74C /* TutorialNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialNode.swift; sourceTree = "<group>"; };
 		91D72B4227B2540900FB24A7 /* GimmeTheLoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GimmeTheLoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +74,6 @@
 		91ECF14127B283860093F981 /* Acid.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Acid.sks; sourceTree = "<group>"; };
 		91ECF14227B283860093F981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91ECF14527B2879C0093F981 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		91ECF14727B2887B0093F981 /* LevelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,7 @@
 		91D72B4427B2540900FB24A7 /* GimmeTheLoot */ = {
 			isa = PBXGroup;
 			children = (
+				91D36A9827D4B19000247CFE /* Info.plist */,
 				9181169A27B973C20053D87D /* SoundEffects */,
 				9141842527B3E45600F187B6 /* Models */,
 				91ECF14027B2835C0093F981 /* Particles */,
@@ -161,6 +165,7 @@
 		91D72B5C27B2541B00FB24A7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91D36A9627D4B16A00247CFE /* Krungthep.ttf */,
 				91D72B4527B2540900FB24A7 /* AppDelegate.swift */,
 				91D72B6027B25C2900FB24A7 /* Extensions.swift */,
 				9181169827B971440053D87D /* SoundManager.swift */,
@@ -183,7 +188,7 @@
 			children = (
 				91D72B4D27B2540900FB24A7 /* GameViewController.swift */,
 				91ECF14527B2879C0093F981 /* MenuViewController.swift */,
-				91ECF14727B2887B0093F981 /* LevelsViewController.swift */,
+				91D2CABC27D4C3C4005D595B /* LevelsCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				91ECF14327B283860093F981 /* Acid.sks in Resources */,
 				91D72B5127B2540900FB24A7 /* Main.storyboard in Resources */,
 				91D72B5327B2540B00FB24A7 /* Assets.xcassets in Resources */,
+				91D36A9727D4B16A00247CFE /* Krungthep.ttf in Resources */,
 				91D72B5627B2540B00FB24A7 /* LaunchScreen.storyboard in Resources */,
 				91ECF14427B283860093F981 /* Assets.xcassets in Resources */,
 				91C4685727BE85A400F10EB8 /* background.mp3 in Resources */,
@@ -294,9 +300,9 @@
 				911DB5A327B4003900973E8C /* GroundNode.swift in Sources */,
 				913DB86027BBD9FE00CD9279 /* BoulderNode.swift in Sources */,
 				9141842B27B3EB4F00F187B6 /* AcidNode.swift in Sources */,
-				91ECF14827B2887B0093F981 /* LevelsViewController.swift in Sources */,
 				91D72B4C27B2540900FB24A7 /* BaseGameScene.swift in Sources */,
 				91ECF14627B2879C0093F981 /* MenuViewController.swift in Sources */,
+				91D2CABD27D4C3C4005D595B /* LevelsCollectionViewController.swift in Sources */,
 				9141842227B3D56A00F187B6 /* LevelScene.swift in Sources */,
 				915191D327B68CB700FC8765 /* LevelModel.swift in Sources */,
 				9141842927B3E53300F187B6 /* PrizeNode.swift in Sources */,
@@ -465,6 +471,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8ZYH9A6QJL;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GimmeTheLoot/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -493,6 +500,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8ZYH9A6QJL;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GimmeTheLoot/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

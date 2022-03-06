@@ -8,6 +8,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Krungthep.ttf">
+            <string>Krungthep</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Menu View Controller-->
         <scene sceneID="9Rt-YV-5km">
@@ -17,149 +22,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_1" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahk-ZN-FQt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1241"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbJ-f5-MYl">
-                                <rect key="frame" x="100" y="423" width="214" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <rect key="frame" x="72" y="403" width="270" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="GJZ-fV-Ksb"/>
+                                    <constraint firstAttribute="width" secondItem="jbJ-f5-MYl" secondAttribute="height" multiplier="3:1" id="uTC-sh-wSA"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Start">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" image="btn"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goToLevelScreen:" destination="bkL-JC-0QU" eventType="touchUpInside" id="ccZ-lP-jZ0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GimmeTheLoot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrM-hy-WNN">
-                                <rect key="frame" x="45" y="194" width="324.5" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WildZorro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrM-hy-WNN">
+                                <rect key="frame" x="47" y="194" width="320" height="76.5"/>
+                                <fontDescription key="fontDescription" name="Krungthep" family="Krungthep" pointSize="60"/>
+                                <color key="textColor" red="0.99607843159999998" green="1" blue="0.32941177490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dn5-Ux-Z6s">
-                                <rect key="frame" x="100" y="503" width="214" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sound On">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="toggleSoundButton:" destination="bkL-JC-0QU" eventType="touchUpInside" id="O9z-X2-SHx"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Aae-bc-GTe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zrM-hy-WNN" firstAttribute="top" secondItem="Aae-bc-GTe" secondAttribute="top" constant="150" id="8S6-g7-get"/>
                             <constraint firstItem="jbJ-f5-MYl" firstAttribute="centerY" secondItem="Pgw-6c-9bh" secondAttribute="centerY" id="AEV-eq-Etb"/>
-                            <constraint firstItem="Dn5-Ux-Z6s" firstAttribute="centerX" secondItem="Pgw-6c-9bh" secondAttribute="centerX" id="Gcp-q9-xfX"/>
-                            <constraint firstItem="Aae-bc-GTe" firstAttribute="trailing" secondItem="jbJ-f5-MYl" secondAttribute="trailing" constant="100" id="Gff-vL-bAL"/>
-                            <constraint firstItem="jbJ-f5-MYl" firstAttribute="leading" secondItem="Aae-bc-GTe" secondAttribute="leading" constant="100" id="Jsc-SX-5Mc"/>
-                            <constraint firstItem="Aae-bc-GTe" firstAttribute="trailing" secondItem="Dn5-Ux-Z6s" secondAttribute="trailing" constant="100" id="LOR-aE-3i0"/>
-                            <constraint firstItem="Dn5-Ux-Z6s" firstAttribute="leading" secondItem="Aae-bc-GTe" secondAttribute="leading" constant="100" id="Lfu-Aj-kOQ"/>
+                            <constraint firstItem="Aae-bc-GTe" firstAttribute="bottom" secondItem="ahk-ZN-FQt" secondAttribute="bottom" constant="-379" id="EzO-T3-C27"/>
+                            <constraint firstItem="ahk-ZN-FQt" firstAttribute="leading" secondItem="Aae-bc-GTe" secondAttribute="leading" id="FWH-uA-H9J"/>
+                            <constraint firstItem="ahk-ZN-FQt" firstAttribute="top" secondItem="Pgw-6c-9bh" secondAttribute="top" id="aq7-MP-ufP"/>
                             <constraint firstItem="jbJ-f5-MYl" firstAttribute="centerX" secondItem="Pgw-6c-9bh" secondAttribute="centerX" id="cNm-Uj-Cbk"/>
-                            <constraint firstItem="Dn5-Ux-Z6s" firstAttribute="top" secondItem="jbJ-f5-MYl" secondAttribute="bottom" constant="30" id="eNk-ZT-Qse"/>
                             <constraint firstItem="zrM-hy-WNN" firstAttribute="centerX" secondItem="Pgw-6c-9bh" secondAttribute="centerX" id="gpE-ic-V9Y"/>
+                            <constraint firstItem="Aae-bc-GTe" firstAttribute="trailing" secondItem="ahk-ZN-FQt" secondAttribute="trailing" id="ust-nq-dc6"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="soundButton" destination="Dn5-Ux-Z6s" id="PP3-Eu-aSS"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyK-b4-Naa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1304" y="84"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CkW-Ky-MB1">
+        <!--Levels Collection View Controller-->
+        <scene sceneID="E4E-YM-LXy">
             <objects>
-                <navigationController id="EsW-3h-Jxy" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7vg-gv-2m7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="SuN-ly-jHM" kind="relationship" relationship="rootViewController" id="4e0-jC-g5t"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Eg-lN-b1Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-504" y="84"/>
-        </scene>
-        <!--Select level-->
-        <scene sceneID="QwD-WL-C1T">
-            <objects>
-                <viewController storyboardIdentifier="LevelsViewController" id="SuN-ly-jHM" customClass="LevelsViewController" customModule="GimmeTheLoot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gWW-E6-33f">
+                <collectionViewController storyboardIdentifier="LevelsViewController" id="qvM-8q-be2" customClass="LevelsCollectionViewController" customModule="GimmeTheLoot" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="G2H-ZH-WYh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4a9-QD-GWw">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PEN-W5-Ucw">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LevelCollectionViewCell" id="bYK-mS-Gpj" customClass="LevelCollectionViewCell" customModule="GimmeTheLoot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="l2o-fQ-aXO">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKJ-bA-nkM">
-                                                    <rect key="frame" x="43" y="54" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="kKJ-bA-nkM" firstAttribute="centerY" secondItem="l2o-fQ-aXO" secondAttribute="centerY" id="TXg-5P-DNl"/>
-                                                <constraint firstItem="kKJ-bA-nkM" firstAttribute="centerX" secondItem="l2o-fQ-aXO" secondAttribute="centerX" id="kfH-25-Hjv"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="levelLabel" destination="kKJ-bA-nkM" id="YzB-56-ucg"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="L7b-Cb-soS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="4a9-QD-GWw" firstAttribute="leading" secondItem="L7b-Cb-soS" secondAttribute="leading" id="6Av-fa-gXf"/>
-                            <constraint firstItem="L7b-Cb-soS" firstAttribute="trailing" secondItem="4a9-QD-GWw" secondAttribute="trailing" id="SZk-In-EbV"/>
-                            <constraint firstItem="L7b-Cb-soS" firstAttribute="bottom" secondItem="4a9-QD-GWw" secondAttribute="bottom" id="tO7-8l-F0s"/>
-                            <constraint firstItem="4a9-QD-GWw" firstAttribute="top" secondItem="L7b-Cb-soS" secondAttribute="top" id="uDL-Xo-liv"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Select level" id="fX8-sb-RYJ">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="RZh-3W-f8X">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="tAJ-qP-0rh">
-                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ivp-ad-uX9">
+                            <size key="itemSize" width="266" height="327"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_1" id="Ujm-VI-cr4">
+                            <rect key="frame" x="0.0" y="-44" width="414" height="896"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="dOe-GS-y1o" customClass="LevelCollectionViewCell" customModule="GimmeTheLoot" customModuleProvider="target">
+                                <rect key="frame" x="74" y="0.0" width="266" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="SuN-ly-jHM" eventType="touchUpInside" id="8gm-96-Hpz"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="levelCollectionView" destination="4a9-QD-GWw" id="Tbl-nb-qMx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kIL-it-l0Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8Z9-c2-5pD">
+                                    <rect key="frame" x="0.0" y="0.0" width="266" height="327"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionViewCellContentView>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="qvM-8q-be2" id="ng5-QN-5p5"/>
+                            <outlet property="delegate" destination="qvM-8q-be2" id="PgA-ea-u3d"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DNz-I6-jUj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="257.97101449275362" y="83.705357142857139"/>
+            <point key="canvasLocation" x="-117.39130434782609" y="83.705357142857139"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -179,11 +121,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background_1" width="1125" height="2436"/>
+        <image name="btn" width="656" height="262"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

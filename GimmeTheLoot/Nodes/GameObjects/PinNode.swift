@@ -24,7 +24,7 @@ public class PinNode: SKSpriteNode {
                                         height: size.height))
         node.name = "pin"
         node.direction = direction
-        
+        node.zPosition = 50
         node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
         node.physicsBody?.isDynamic = false
         node.physicsBody?.categoryBitMask = PhysicsCategory.Pin

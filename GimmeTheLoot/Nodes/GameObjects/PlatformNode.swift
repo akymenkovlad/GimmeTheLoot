@@ -10,7 +10,7 @@ import SpriteKit
 public class PlatformNode: SKSpriteNode {
     
     public static func newInstance(with size: CGSize) -> PlatformNode {
-        let node = PlatformNode(texture: nil,
+        let node = PlatformNode(texture: SKTexture(imageNamed: "platform"),
                                 color: .yellow,
                               size: CGSize(width: size.width,
                                            height: size.height))
