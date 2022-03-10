@@ -106,7 +106,8 @@ class BaseGameScene: SKScene {
         guard let vector = vector else { return }
         var actions = [SKAction]()
         actions.append(.move(by: vector, duration: 0.3))
-        actions.append(.wait(forDuration: 0.5))
+        actions.append(.fadeOut(withDuration: 0.4))
+        actions.append(.removeFromParent())
         self.touchedPin.run(.sequence(actions))
     }
     @objc func didTap(sender: UITapGestureRecognizer) {

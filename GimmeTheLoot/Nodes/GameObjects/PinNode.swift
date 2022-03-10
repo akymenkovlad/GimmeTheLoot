@@ -12,7 +12,7 @@ public class PinNode: SKSpriteNode {
     private(set) var direction: Directions = .left
     private var shift: CGFloat {
         get {
-            self.size.width * 0.8
+            self.size.height * 0.8
         }
     }
     private(set) var wasMoved = false
@@ -20,12 +20,12 @@ public class PinNode: SKSpriteNode {
     public static func newInstance(with size: CGSize, direction: Directions) -> PinNode {
         let node = PinNode(texture: SKTexture(imageNamed: "pin"),
                            color: .yellow,
-                           size: CGSize(width: size.width,
-                                        height: size.height))
+                           size: CGSize(width: size.height,
+                                        height: size.width))
         node.name = "pin"
         node.direction = direction
         node.zPosition = 50
-        node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
+        node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: size.height / 2, height: size.width))
         node.physicsBody?.isDynamic = false
         node.physicsBody?.categoryBitMask = PhysicsCategory.Pin
         return node
@@ -35,13 +35,13 @@ public class PinNode: SKSpriteNode {
         var angle: CGFloat = 0.0
         switch direction {
         case .left:
-            angle = 0.0
-        case .right:
-            angle = .pi
-        case .up:
             angle = -.pi / 2
-        case .down:
+        case .right:
             angle = .pi / 2
+        case .up:
+            angle = .pi
+        case .down:
+            angle = 0.0
         }
         self.zRotation = angle
     }

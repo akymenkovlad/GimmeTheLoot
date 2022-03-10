@@ -15,6 +15,7 @@ public class GroundNode: SKSpriteNode {
                               size: CGSize(width: size.width,
                                            height: size.height))
         node.name = "ground"
+        node.zPosition = 25
         node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
         node.physicsBody?.isDynamic = false
         node.physicsBody?.categoryBitMask = PhysicsCategory.Ground

@@ -13,7 +13,7 @@ class HudNode : SKNode {
     var menuButtonAction: (() -> ())?
     
     private var restartButton: SKSpriteNode!
-    private let restartButtonTexture = SKTexture(imageNamed: "quit_button")
+    private let restartButtonTexture = SKTexture(imageNamed: "restart_level_button")
     var restartButtonAction: (() -> ())?
     
     private var levelLabel: SKLabelNode!
@@ -28,15 +28,15 @@ class HudNode : SKNode {
         menuButton = SKSpriteNode(texture: menuButtonTexture)
         menuButton.size = CGSize(width: 30,
                                  height: 30)
-        menuButton.position = CGPoint(x: 0 + menuButton.size.width / 2 + margin,
-                                      y: size.height - menuButton.size.height / 2 - margin)
+        menuButton.position = CGPoint(x: menuButton.size.width / 2 + margin,
+                                      y: size.height - menuButton.size.height - margin)
         menuButton.zPosition = 1000
         
         restartButton = SKSpriteNode(texture: restartButtonTexture)
         restartButton.size = CGSize(width: 30,
                                     height: 30)
-        restartButton.position = CGPoint(x: menuButton.position.x + (menuButton.size.width + restartButton.size.width + 10) / 2,
-                                         y: size.height - restartButton.size.height / 2 - margin)
+        restartButton.position = CGPoint(x: size.width - restartButton.size.width / 2 - margin ,
+                                         y: size.height - restartButton.size.height - margin)
         restartButton.zPosition = 1000
         
         levelLabel = SKLabelNode(fontNamed: "Krungthep")

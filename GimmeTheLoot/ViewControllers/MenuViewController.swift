@@ -30,8 +30,10 @@ class MenuViewController: UIViewController {
             soundButton.setImage(UIImage(named: "sound_on"), for: .normal)
         }
         view.addSubview(soundButton)
-        soundButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 100).isActive = true
+        soundButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 80).isActive = true
         soundButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        soundButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        soundButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     
     @IBAction func toggleSoundButton(_ sender: Any) {

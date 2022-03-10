@@ -9,18 +9,20 @@ import SpriteKit
 
 public class AcidNode: SKShapeNode {
     
-    public static func newInstance(with size: CGSize) -> AcidNode {
+    public static func newInstance(with size: CGSize, particleRange: CGSize) -> AcidNode {
         let size = CGSize(width: size.width ,height: size.height)
         let node = AcidNode(rectOf: size)
+        node.zPosition = 10
         node.name = "acid"
+        node.strokeColor = .clear
         node.physicsBody = SKPhysicsBody(rectangleOf: size)
         node.physicsBody?.categoryBitMask = PhysicsCategory.Acid
         node.physicsBody?.contactTestBitMask = PhysicsCategory.Boulder | PhysicsCategory.Player
         node.physicsBody?.isDynamic = false
         let emitter = SKEmitterNode(fileNamed: "Acid")!
-        emitter.particlePositionRange = CGVector(dx: size.width, dy: size.height * 5)
+        emitter.particlePositionRange = CGVector(dx: particleRange.width, dy: particleRange.height)
         node.addChild(emitter)
-        emitter.position.y += size.height * 5
+        emitter.position.y += particleRange.height * 0.8
         
         return node
     }

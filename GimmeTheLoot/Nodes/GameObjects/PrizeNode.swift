@@ -10,7 +10,7 @@ import SpriteKit
 public class PrizeNode: SKSpriteNode {
     
     public static func newInstance(with size: CGSize) -> PrizeNode {
-        let node = PrizeNode(texture: nil,
+        let node = PrizeNode(texture: SKTexture(imageNamed: "treasure"),
                              color: .green,
                              size: CGSize(width: size.width,
                                           height: size.height))

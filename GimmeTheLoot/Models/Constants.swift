@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 let MuteKey = "MUTED"
-let NumberOfLevels = 6
+let NumberOfLevels = 30
 
 struct PhysicsCategory {
     static let Player: UInt32 = 0x1 << 1

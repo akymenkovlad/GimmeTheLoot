@@ -11,12 +11,12 @@ class GameOverScene: SKScene {
     
     weak var transitionDelegate: TransitionDelegate?
     
-    private lazy var retryButton: SKSpriteNode! = SKSpriteNode(texture: retryButtonTexture, size: CGSize(width: 250, height: 100))
+    private lazy var retryButton: SKSpriteNode! = SKSpriteNode(texture: retryButtonTexture, size: CGSize(width: 200, height: 80))
     private var menuButton: SKSpriteNode!
-    private lazy var nextLevelButton: SKSpriteNode! = SKSpriteNode(texture: nextLevelButtonTexture, size: CGSize(width: 250, height: 100))
+    private lazy var nextLevelButton: SKSpriteNode! = SKSpriteNode(texture: nextLevelButtonTexture, size: CGSize(width: 200, height: 80))
     
     private lazy var retryButtonTexture = SKTexture(imageNamed: "restart_button")
-    private var menuButtonTexture = SKTexture(imageNamed: "start_button")
+    private var menuButtonTexture = SKTexture(imageNamed: "menu_button")
     private lazy var nextLevelButtonTexture = SKTexture(imageNamed: "next_level_button")
     
     private lazy var loseButtonTexture = SKTexture(imageNamed: "lose_label")
@@ -42,7 +42,7 @@ class GameOverScene: SKScene {
         addChild(resultNode)
         
         
-        menuButton = SKSpriteNode(texture: menuButtonTexture, size: CGSize(width: 250, height: 100))
+        menuButton = SKSpriteNode(texture: menuButtonTexture, size: CGSize(width: 200, height: 80))
         menuButton.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(menuButton)
         
