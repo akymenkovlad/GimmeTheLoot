@@ -105,6 +105,9 @@ class BaseGameScene: SKScene {
         }
         guard let vector = vector else { return }
         var actions = [SKAction]()
+        if !SoundManager.sharedInstance.isMuted {
+            actions.append(.playSoundFileNamed("swipe.mp3", waitForCompletion: false))
+        }
         actions.append(.move(by: vector, duration: 0.3))
         actions.append(.fadeOut(withDuration: 0.4))
         actions.append(.removeFromParent())
@@ -164,8 +167,18 @@ extension BaseGameScene: SKPhysicsContactDelegate {
         switch otherBody.categoryBitMask {
         case PhysicsCategory.GameFrame, PhysicsCategory.Pin:
             levelModel.player.changeDirection()
-        case PhysicsCategory.Enemy, PhysicsCategory.Acid:
-            moveToGameOverScene(with: false)
+        case PhysicsCategory.Acid:
+            if !SoundManager.sharedInstance.isMuted {
+               run(.playSoundFileNamed("acid_contact.mp3", waitForCompletion: false))
+            }
+            fallthrough
+        case PhysicsCategory.Enemy:
+            let player = playerBody.node as! PlayerNode
+            player.startMovement()
+            player.removeAllActions()
+            run(.wait(forDuration: 0.5), completion: {
+                self.moveToGameOverScene(with: false)
+            })
         default:
             break
         }
@@ -206,6 +219,9 @@ extension BaseGameScene: SKPhysicsContactDelegate {
         
         switch otherBody.categoryBitMask {
         case PhysicsCategory.Boulder:
+            if !SoundManager.sharedInstance.isMuted {
+               run(.playSoundFileNamed("acid_contact.mp3", waitForCompletion: false))
+            }
             otherBody.node?.removeFromParent()
         default:
             break

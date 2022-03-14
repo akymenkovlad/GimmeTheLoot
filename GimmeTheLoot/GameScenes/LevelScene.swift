@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import GameplayKit
 
 class LevelScene: BaseGameScene {
     
@@ -14,6 +15,11 @@ class LevelScene: BaseGameScene {
         super.init(size: size)
         currentLevel = level
     }
+    
+    lazy var gameState: GKStateMachine = GKStateMachine(states: [
+        Tutorial(scene: self),
+        Playing(scene: self)
+    ])
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -24,6 +30,9 @@ class LevelScene: BaseGameScene {
         super.didMove(to: view)
         levelModel.configureScene(in: currentLevel, frame: gameFrame.frame)
         configureLevelObjects()
+        
+        showTutorial()
+        
         
         hud.setTextForLabel("Level \(currentLevel!)")
         hud.restartButtonAction = {
@@ -38,7 +47,7 @@ class LevelScene: BaseGameScene {
             self.levelModel.configureScene(in: self.currentLevel, frame: self.gameFrame.frame)
             self.configureLevelObjects()
         }
-        showTutorial()
+        
     }
     
     public func configureLevelObjects() {
@@ -77,32 +86,44 @@ class LevelScene: BaseGameScene {
         switch currentLevel {
         case 1,2,3,4:
             tutorial = TutorialNode()
-            tutorial.setup()
-            tutorial.setTextForLabel(in: currentLevel, self.size)
+            tutorial.setup(with: self.size)
+            tutorial.setTutorial(in: currentLevel, self.size)
+            tutorial.alpha = 0.0
             addChild(tutorial)
-            break
+            gameState.enter(Tutorial.self)
         default:
+            gameState.enter(Playing.self)
             break
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let first = touches.first else { return }
-        let location = first.location(in: self)
-        if let pin = levelModel.pins.first(where: { node in node.contains(location) }) {
-            touchedPin = pin
+        switch gameState.currentState {
+        case is Tutorial:
+            gameState.enter(Playing.self)
+        case is Playing:
+            guard let first = touches.first else { return }
+            let location = first.location(in: self)
+            if let pin = levelModel.pins.first(where: { node in node.contains(location) }) {
+                touchedPin = pin
+            }
+            if levelModel.player.contains(location) {
+                touchedNode = levelModel.player
+            }
+            hud.touchBeganAtPoint(point: location)
+        default:
+            break
         }
-        if levelModel.player.contains(location) {
-            touchedNode = levelModel.player
-        }
-        hud.touchBeganAtPoint(point: location)
     }
-    
     override func update(_ currentTime: TimeInterval) {
-        levelModel.player.updatePosition()
-
-        guard let enemy = levelModel.enemy else { return }
-        enemy.updatePosition()
+        switch gameState.currentState {
+        case is Playing:
+            levelModel.player.updatePosition()
+            guard let enemy = levelModel.enemy else { return }
+            enemy.updatePosition()
+        default:
+            break
+        }
         
     }
 }

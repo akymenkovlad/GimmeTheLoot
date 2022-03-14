@@ -27,10 +27,11 @@ class GameOverScene: SKScene {
     
     private var level: Int!
     private let defaults = UserDefaults.standard
+    private var won: Bool!
     
     init(size: CGSize, won: Bool, level: Int) {
         super.init(size: size)
-        
+        self.won = won
         background = SKSpriteNode(texture: SKTexture(imageNamed: "background_1"), size: size)
         background.position = CGPoint(x: size.width / 2, y: size.height / 2)
         background.zPosition = -100
@@ -61,6 +62,12 @@ class GameOverScene: SKScene {
         }
         
         self.level = level
+    }
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        if !SoundManager.sharedInstance.isMuted {
+            run(.playSoundFileNamed(won ? "win.mp3" : "lose.mp3", waitForCompletion: true))
+        }
     }
     
     required init(coder aDecoder: NSCoder) {

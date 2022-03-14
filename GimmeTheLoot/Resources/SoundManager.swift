@@ -16,7 +16,7 @@ class SoundManager : NSObject, AVAudioPlayerDelegate {
     
     //Music: http://www.bensound.com/royalty-free-music
     static private let tracks = [
-        "background"
+        "main_theme"
     ]
     
     private override init() {
@@ -34,6 +34,7 @@ class SoundManager : NSObject, AVAudioPlayerDelegate {
             
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
+                
                 audioPlayer?.delegate = self
             } catch {
                 print("audio player failed to load")
@@ -42,6 +43,7 @@ class SoundManager : NSObject, AVAudioPlayerDelegate {
             
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
+            audioPlayer?.volume = 0.5
             
             trackPosition = (trackPosition + 1) % SoundManager.tracks.count
         } else {

@@ -20,7 +20,7 @@ class LevelsCollectionViewController: UICollectionViewController, UICollectionVi
         self.navigationController?.navigationBar.barTintColor = .purple
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.yellow, NSAttributedString.Key.font: UIFont(name: "Krungthep", size: 25)]
         navigationController?.navigationBar.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
-   
+        
         setUpMenuButton()
         
         self.collectionView!.register(LevelCollectionViewCell.self, forCellWithReuseIdentifier: LevelCollectionViewCell.identifier)
@@ -32,7 +32,7 @@ class LevelsCollectionViewController: UICollectionViewController, UICollectionVi
         menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 30, height: 30)
         menuBtn.setImage(UIImage(named:"quit_button"), for: .normal)
         menuBtn.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
-
+        
         let menuBarItem = UIBarButtonItem(customView: menuBtn)
         let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 35)
         currWidth?.isActive = true
@@ -78,16 +78,14 @@ class LevelsCollectionViewController: UICollectionViewController, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 125 , height: 125)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
         let leftInset = 50.0
         let rightInset = leftInset
-        
         return UIEdgeInsets(top: 50, left: leftInset, bottom: 0, right: rightInset)
     }
     

@@ -67,7 +67,7 @@ class LevelModel   {
                                              particleRange: CGSize(width: frame.width * 0.3, height: frame.height * 0.05)))
             acid[0].position = CGPoint(x: frame.minX + frame.width * 0.55, y: frame.minY + acid[0].frame.height / 2)
             
-            box.append(BoxNode.newInstance(with: CGSize(width: frame.width * 0.25, height: frame.height * 0.09)))
+            box.append(BoxNode.newInstance(with: CGSize(width: frame.width * 0.3, height: frame.height * 0.09)))
             box[0].position = CGPoint(x: acid[0].position.x,
                                    y: pinsPositions[0].y + (pinSize.width + box[0].size.height) / 2)
             
@@ -126,7 +126,7 @@ class LevelModel   {
         case 5:
             groundsSize = [
                 //0
-                CGSize(width: frame.width * 0.25, height: frame.height * 0.0675),
+                CGSize(width: frame.width * 0.25, height: frame.height * 0.1),
                 //1
                 CGSize(width: frame.width * 0.25, height: frame.height * 0.1),
                 //2
@@ -144,7 +144,7 @@ class LevelModel   {
             ]
             groundsPositions = [
                 //0
-                CGPoint(x: frame.maxX - frame.width * 0.125, y: frame.minY + frame.height * 0.3),
+                CGPoint(x: frame.maxX - frame.width * 0.13, y: frame.minY + frame.height * 0.315),
                 //1
                 CGPoint(x: frame.maxX - frame.width * 0.125, y: frame.maxY - frame.height * 0.05),
                 //2
@@ -173,7 +173,7 @@ class LevelModel   {
                 .down,
                 .right
             ]
-            box.append(BoxNode.newInstance(with: CGSize(width: frame.height * 0.12, height: frame.height * 0.12)))
+            box.append(BoxNode.newInstance(with: CGSize(width: frame.height * 0.11, height: frame.height * 0.11)))
             box[0].position = CGPoint(x: frame.width * 0.75,
                                    y: frame.maxY - box[0].size.height / 2)
             

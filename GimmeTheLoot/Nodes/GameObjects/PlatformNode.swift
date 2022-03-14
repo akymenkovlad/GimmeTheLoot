@@ -21,7 +21,6 @@ public class PlatformNode: SKSpriteNode {
         node.physicsBody?.restitution = 0
         node.physicsBody?.categoryBitMask = PhysicsCategory.Platform
         node.physicsBody?.collisionBitMask = PhysicsCategory.Enemy | PhysicsCategory.Player | PhysicsCategory.Boulder
-        
         return node
     }
     
